@@ -1,0 +1,1346 @@
+/* ==========================================================================
+   Cartoon Vaala — Reusable UI Components
+   Tactile Mechanical Controls, Authentic CRT & TV Consoles, Semantic Design
+   ========================================================================== */
+
+/* ==========================================================================
+   1. Buttons & Tactile Mechanical Controls
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: 0.65rem 1.35rem;
+  border-radius: var(--radius-btn);
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background-color var(--duration-tactile) var(--ease-tactile),
+              border-color var(--duration-tactile) var(--ease-tactile),
+              color var(--duration-tactile) var(--ease-tactile),
+              transform var(--duration-instant) var(--ease-tactile),
+              box-shadow var(--duration-instant) var(--ease-tactile);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.btn-primary {
+  background-color: var(--color-action-primary);
+  color: var(--color-action-primary-text);
+  border-color: #f59e0b;
+  box-shadow: var(--shadow-tactile-btn);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-action-primary-hover);
+  color: #000000;
+}
+
+.btn-primary:active {
+  background-color: var(--color-action-primary-active);
+  transform: translateY(2px);
+  box-shadow: var(--shadow-tactile-btn-pressed);
+}
+
+.btn-secondary {
+  background-color: var(--color-action-secondary);
+  color: var(--color-action-secondary-text);
+  border: 1px solid var(--color-action-secondary-border);
+  box-shadow: var(--shadow-tactile-btn);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-action-secondary-hover);
+  border-color: var(--color-text-accent);
+  color: var(--color-text-heading);
+}
+
+.btn-secondary:active {
+  transform: translateY(2px);
+  box-shadow: var(--shadow-tactile-btn-pressed);
+}
+
+.btn-sm {
+  padding: 0.4rem 0.85rem;
+  font-size: var(--fs-xs);
+  border-radius: var(--radius-tag);
+}
+
+/* Tactical Tune / Action Button */
+.btn-tune {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  background-color: var(--color-surface-sunken);
+  color: var(--color-text-accent);
+  border: 1px solid var(--color-border-defined);
+  border-radius: var(--radius-tag);
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all var(--duration-tactile) var(--ease-tactile);
+}
+
+.btn-tune:hover {
+  background-color: var(--color-action-primary);
+  color: #0f0c0a;
+  border-color: var(--color-action-primary);
+}
+
+.btn-tune:active {
+  transform: translateY(1px);
+}
+
+/* ==========================================================================
+   2. Site Header & Station Status Navigation
+   ========================================================================== */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 76px;
+  z-index: var(--z-header);
+  background-color: var(--color-surface-canvas);
+  border-bottom: 1px solid var(--color-border-subtle);
+  transition: background-color var(--duration-tactile) var(--ease-smooth),
+              box-shadow var(--duration-tactile) var(--ease-smooth);
+}
+
+.site-header.scrolled {
+  background-color: #140f0c;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+  border-bottom-color: var(--color-border-defined);
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  z-index: calc(var(--z-header) + 2);
+}
+
+.brand-logo {
+  height: 46px;
+  width: auto;
+  object-fit: contain;
+}
+
+.brand-station-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 8px;
+  background-color: var(--color-surface-sunken);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-tag);
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  color: var(--color-text-subtle);
+}
+
+.status-dot-on-air {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--color-status-on-air);
+  box-shadow: 0 0 6px var(--color-status-on-air);
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--color-text-body);
+  transition: color var(--duration-tactile) var(--ease-tactile);
+  padding: 0.4rem 0;
+  position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--color-action-primary);
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-action-primary);
+  transition: width var(--duration-tactile) var(--ease-tactile);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+/* Header BGM Toggle Button */
+.bgm-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.85rem;
+  background-color: var(--color-surface-panel);
+  border: 1px solid var(--color-border-defined);
+  border-radius: var(--radius-btn);
+  color: var(--color-text-heading);
+  font-family: var(--font-display);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--duration-tactile) var(--ease-tactile);
+  box-shadow: var(--shadow-tactile-btn);
+}
+
+.bgm-toggle:hover {
+  background-color: var(--color-surface-panel-hover);
+  border-color: var(--color-text-accent);
+  color: var(--color-text-accent);
+}
+
+.bgm-toggle:active {
+  transform: translateY(1px);
+  box-shadow: var(--shadow-tactile-btn-pressed);
+}
+
+.bgm-toggle.playing {
+  background-color: #2b180d;
+  border-color: var(--color-action-primary);
+  color: var(--color-text-heading);
+}
+
+/* Equalizer Bars */
+.equalizer-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 12px;
+  width: 12px;
+}
+
+.eq-bar {
+  width: 2.5px;
+  background-color: var(--color-action-primary);
+  border-radius: 1px;
+  height: 3px;
+  transition: height var(--duration-instant) ease;
+}
+
+.bgm-toggle.playing .eq-bar:nth-child(1) {
+  animation: eq-bounce 0.7s ease infinite alternate;
+}
+.bgm-toggle.playing .eq-bar:nth-child(2) {
+  animation: eq-bounce 0.5s ease infinite alternate 0.15s;
+}
+.bgm-toggle.playing .eq-bar:nth-child(3) {
+  animation: eq-bounce 0.8s ease infinite alternate 0.3s;
+}
+
+@keyframes eq-bounce {
+  0% { height: 2px; }
+  100% { height: 12px; }
+}
+
+/* Hamburger Menu Button */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 38px;
+  height: 38px;
+  padding: 9px 8px;
+  background-color: var(--color-surface-panel);
+  border: 1px solid var(--color-border-defined);
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  z-index: calc(var(--z-header) + 3);
+}
+
+.menu-toggle span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: var(--color-text-heading);
+  border-radius: 1px;
+  transition: all var(--duration-tactile) var(--ease-tactile);
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ==========================================================================
+   3. Integrated TV Console & Audio Tuner Deck (Hero Component)
+   ========================================================================== */
+.player-chassis {
+  background-color: var(--color-surface-panel);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-bezel);
+  box-shadow: var(--shadow-chassis);
+  padding: var(--space-md);
+  position: relative;
+}
+
+.hero-player-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: var(--space-xs);
+  margin-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--color-border-subtle);
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+.hero-topbar-tags {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.hero-tag-sep {
+  color: var(--color-border-strong);
+}
+
+.hero-tag-quote {
+  font-size: var(--fs-xs);
+  color: var(--color-text-subtle);
+  font-style: italic;
+}
+
+.sound-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.35rem 0.65rem;
+  background-color: var(--color-surface-sunken);
+  color: var(--color-text-body);
+  border: 1px solid var(--color-border-defined);
+  border-radius: var(--radius-tag);
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all var(--duration-tactile) var(--ease-tactile);
+}
+
+.sound-btn:hover {
+  background-color: var(--color-surface-elevated);
+  border-color: var(--color-text-accent);
+  color: var(--color-text-heading);
+}
+
+.sound-btn:active {
+  transform: translateY(1px);
+}
+
+.sound-btn.active {
+  background-color: var(--color-surface-accent-warm);
+  border-color: var(--color-action-primary);
+  color: var(--color-text-accent);
+}
+
+.player-layout {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: var(--space-md);
+  align-items: center;
+  background-color: var(--color-surface-sunken);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-card);
+  padding: var(--space-sm);
+}
+
+/* TV Bezel & Screen */
+.player-tv-bezel {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background-color: #050403;
+  border: 2px solid #3d3126;
+  border-radius: var(--radius-tag);
+  overflow: hidden;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+.player-cartoon-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.player-cartoon-image.image-transitioning {
+  opacity: 0.3;
+  filter: blur(2px);
+}
+
+.player-screen-badge-overlay {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  z-index: 2;
+}
+
+.player-channel-tag {
+  display: inline-block;
+  padding: 2px 6px;
+  background-color: rgba(15, 12, 10, 0.92);
+  border: 1px solid var(--color-border-defined);
+  border-radius: var(--radius-meter);
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-action-primary);
+  letter-spacing: 0.04em;
+}
+
+.player-tv-scanlines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.25),
+    rgba(0, 0, 0, 0.25) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 3;
+}
+
+.player-tv-footer-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 6px;
+  font-size: var(--fs-micro);
+  font-family: var(--font-mono);
+  color: var(--color-text-subtle);
+}
+
+.player-live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-status-on-air);
+}
+
+/* Audio Console Controls */
+.player-console-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.player-meta-header {
+  border-bottom: 1px solid var(--color-border-subtle);
+  padding-bottom: var(--space-2xs);
+}
+
+.player-cartoon-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text-heading);
+  margin-bottom: 2px;
+}
+
+.player-track-subtitle {
+  font-size: var(--fs-xs);
+  color: var(--color-text-accent);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Scrubber & Timeline */
+.player-timeline-wrap {
+  margin-top: 2px;
+}
+
+.player-scrubber-track {
+  position: relative;
+  width: 100%;
+  height: 6px;
+  background-color: #27201a;
+  border-radius: var(--radius-meter);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.player-scrubber-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background-color: var(--color-action-primary);
+  border-radius: var(--radius-meter);
+  pointer-events: none;
+}
+
+.player-progress-input {
+  position: absolute;
+  top: -6px;
+  left: 0;
+  width: 100%;
+  height: 18px;
+  opacity: 0;
+  cursor: pointer;
+  margin: 0;
+  z-index: 4;
+}
+
+.player-time-display {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  color: var(--color-text-subtle);
+  margin-top: 3px;
+}
+
+/* Main Playback Button Row */
+.player-main-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-xs);
+  margin-top: 4px;
+  flex-wrap: wrap;
+}
+
+.player-btn-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.player-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  background-color: var(--color-surface-elevated);
+  border: 1px solid var(--color-border-defined);
+  border-radius: var(--radius-btn);
+  color: var(--color-text-body);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all var(--duration-tactile) var(--ease-tactile);
+  box-shadow: var(--shadow-tactile-btn);
+}
+
+.player-btn-secondary:hover {
+  background-color: var(--color-surface-panel-hover);
+  border-color: var(--color-text-accent);
+  color: var(--color-text-heading);
+}
+
+.player-btn-secondary:active {
+  transform: translateY(1px);
+  box-shadow: var(--shadow-tactile-btn-pressed);
+}
+
+.player-btn-secondary.active {
+  background-color: var(--color-action-primary);
+  color: #0f0c0a;
+  border-color: var(--color-action-primary);
+}
+
+.player-btn-play {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.4rem 1.1rem;
+  background-color: var(--color-action-primary);
+  color: #0f0c0a;
+  border: 1px solid #f59e0b;
+  border-radius: var(--radius-btn);
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--duration-tactile) var(--ease-tactile);
+  box-shadow: var(--shadow-tactile-btn);
+}
+
+.player-btn-play:hover {
+  background-color: var(--color-action-primary-hover);
+  color: #000000;
+}
+
+.player-btn-play:active {
+  transform: translateY(2px);
+  box-shadow: var(--shadow-tactile-btn-pressed);
+}
+
+.player-volume-control {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.player-volume-slider {
+  width: 65px;
+  height: 5px;
+  accent-color: var(--color-action-primary);
+  cursor: pointer;
+}
+
+/* Playlist Section */
+.player-playlist-section {
+  margin-top: var(--space-sm);
+  padding-top: var(--space-xs);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.player-playlist-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-xs);
+}
+
+.player-playlist-title {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-subtle);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+}
+
+.playlist-track-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 140px;
+  overflow-y: auto;
+}
+
+.playlist-track-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  background-color: var(--color-surface-sunken);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-tag);
+  cursor: pointer;
+  transition: all var(--duration-tactile) var(--ease-tactile);
+}
+
+.playlist-track-item:hover {
+  background-color: var(--color-surface-elevated);
+  border-color: var(--color-border-defined);
+}
+
+.playlist-track-item.active {
+  background-color: #2e1a10;
+  border-color: var(--color-action-primary);
+}
+
+.playlist-item-num {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  color: var(--color-text-subtle);
+  min-width: 16px;
+}
+
+.playlist-item-meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.playlist-item-title {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--color-text-heading);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.playlist-item-channel {
+  font-size: var(--fs-micro);
+  font-family: var(--font-mono);
+  color: var(--color-text-accent);
+}
+
+/* ==========================================================================
+   4. Afternoon Transmission Dial / Timeline Strip (Lightweight & Tactile)
+   ========================================================================== */
+.transmission-dial-container {
+  background-color: var(--color-surface-panel);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-bezel);
+  box-shadow: var(--shadow-chassis);
+  padding: var(--space-md);
+  overflow: hidden;
+}
+
+.transmission-timeline-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: var(--space-xs);
+}
+
+.dial-slot-node {
+  background-color: var(--color-surface-sunken);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-card);
+  padding: var(--space-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  text-align: left;
+  transition: all var(--duration-tactile) var(--ease-tactile);
+  position: relative;
+}
+
+.dial-slot-node:hover {
+  background-color: var(--color-surface-elevated);
+  border-color: var(--color-action-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card);
+}
+
+.dial-slot-node:active {
+  transform: translateY(0);
+}
+
+.dial-slot-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+}
+
+.dial-time {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--color-text-accent);
+}
+
+.dial-slot-body {
+  flex: 1;
+}
+
+.dial-title {
+  display: block;
+  font-size: var(--fs-sm);
+  color: var(--color-text-heading);
+  margin-bottom: 2px;
+}
+
+.dial-dub-note {
+  display: block;
+  font-size: var(--fs-micro);
+  color: var(--color-text-subtle);
+  line-height: 1.4;
+}
+
+.dial-tune-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+  padding-top: 4px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  transition: color var(--duration-tactile) var(--ease-tactile);
+}
+
+.dial-slot-node:hover .dial-tune-indicator {
+  color: var(--color-action-primary);
+}
+
+.channel-pill {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: var(--radius-meter);
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.channel-pill.hungama {
+  background-color: #3b1d0e;
+  border: 1px solid var(--color-channel-hungama);
+  color: #fbbf24;
+}
+
+.channel-pill.cn {
+  background-color: #0c2b3d;
+  border: 1px solid var(--color-channel-cn);
+  color: #38bdf8;
+}
+
+.channel-pill.pogo {
+  background-color: #0c332e;
+  border: 1px solid var(--color-channel-pogo);
+  color: #2dd4bf;
+}
+
+/* ==========================================================================
+   5. Editorial Character & Show Feature Layouts (Asymmetric Variety)
+   ========================================================================== */
+.editorial-spotlight {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--space-xl);
+  background-color: var(--color-surface-panel);
+  border: 1px solid var(--color-border-defined);
+  border-radius: var(--radius-bezel);
+  padding: var(--space-lg);
+  align-items: center;
+  margin-bottom: var(--space-xl);
+}
+
+.spotlight-media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  border: 1px solid var(--color-border-strong);
+  background-color: var(--color-surface-sunken);
+}
+
+.spotlight-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.spotlight-meta-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+}
+
+.spotlight-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.spotlight-heading {
+  font-size: var(--fs-h3);
+  margin-bottom: var(--space-xs);
+}
+
+.spotlight-quote {
+  padding-left: var(--space-sm);
+  border-left: 3px solid var(--color-action-primary);
+  font-style: italic;
+  color: var(--color-text-heading);
+  margin: var(--space-xs) 0 var(--space-sm);
+}
+
+/* Side Showcase Cards (Asymmetric 2-column with Varied Weights) */
+.asymmetric-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-md);
+}
+
+.showcase-card {
+  background-color: var(--color-surface-panel);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--duration-tactile) var(--ease-tactile),
+              border-color var(--duration-tactile) var(--ease-tactile);
+}
+
+.showcase-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-border-defined);
+}
+
+.showcase-media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background-color: var(--color-surface-sunken);
+  border-bottom: 1px solid var(--color-border-subtle);
+  overflow: hidden;
+}
+
+.showcase-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.showcase-channel-tag {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.showcase-body {
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.showcase-title {
+  font-size: 1.2rem;
+  margin-bottom: 4px;
+}
+
+.showcase-tagline {
+  font-size: var(--fs-xs);
+  color: var(--color-text-accent);
+  margin-bottom: var(--space-xs);
+  font-style: italic;
+}
+
+.showcase-desc {
+  font-size: var(--fs-sm);
+  color: var(--color-text-body);
+  line-height: 1.6;
+  margin-bottom: var(--space-sm);
+  flex: 1;
+}
+
+.showcase-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-xs);
+  border-top: 1px solid var(--color-border-subtle);
+  font-size: var(--fs-xs);
+  color: var(--color-text-subtle);
+}
+
+/* ==========================================================================
+   6. Curator's Workbench & Developer Connection Hub
+   ========================================================================== */
+.workbench-section {
+  position: relative;
+  background-color: var(--color-surface-canvas-alt);
+  border-top: 1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.workbench-card {
+  background-color: var(--color-surface-panel);
+  border: 1px solid var(--color-border-defined);
+  border-radius: var(--radius-bezel);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-chassis);
+  position: relative;
+  overflow: hidden;
+}
+
+.workbench-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--color-action-primary), var(--color-status-on-air));
+}
+
+.workbench-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: var(--space-xl);
+  align-items: center;
+}
+
+.developer-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px;
+  background-color: var(--color-surface-sunken);
+  border: 1px solid var(--color-border-defined);
+  border-radius: var(--radius-tag);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--color-text-heading);
+  margin-bottom: var(--space-sm);
+}
+
+.pulse-dot-available {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-status-on-air);
+  box-shadow: 0 0 8px var(--color-status-on-air);
+  animation: pulse-glow 2s infinite ease-in-out;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+
+.workbench-title {
+  font-size: var(--fs-h2);
+  line-height: 1.15;
+  margin-bottom: var(--space-sm);
+}
+
+.workbench-bio {
+  font-size: var(--fs-body);
+  line-height: 1.7;
+  color: var(--color-text-body);
+  margin-bottom: var(--space-md);
+}
+
+.workbench-quote-box {
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--color-surface-sunken);
+  border-left: 3px solid var(--color-action-primary);
+  border-radius: 0 var(--radius-tag) var(--radius-tag) 0;
+  margin-bottom: var(--space-md);
+}
+
+.workbench-quote-text {
+  font-family: var(--font-handwritten);
+  font-size: 1.4rem;
+  color: var(--color-text-accent);
+  margin: 0;
+  line-height: 1.35;
+}
+
+/* Conversation Starter Prompts */
+.conversation-starters {
+  margin-top: var(--space-md);
+}
+
+.conversation-starters-title {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-subtle);
+  margin-bottom: var(--space-xs);
+}
+
+.starter-chips-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.starter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background-color: var(--color-surface-sunken);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-tag);
+  font-size: var(--fs-xs);
+  color: var(--color-text-body);
+  user-select: none;
+  transition: all var(--duration-tactile) var(--ease-tactile);
+}
+
+.starter-chip:hover {
+  border-color: var(--color-action-primary);
+  background-color: var(--color-surface-elevated);
+  color: var(--color-text-heading);
+}
+
+/* Connection Action Cards Stack */
+.connection-cards-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.connect-action-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  background-color: var(--color-surface-sunken);
+  border: 1px solid var(--color-border-defined);
+  border-radius: var(--radius-card);
+  text-decoration: none;
+  transition: all var(--duration-tactile) var(--ease-tactile);
+  box-shadow: var(--shadow-card);
+}
+
+.connect-action-card:hover {
+  background-color: var(--color-surface-elevated);
+  border-color: var(--color-action-primary);
+  transform: translateY(-2px);
+}
+
+.connect-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-btn);
+  background-color: var(--color-surface-panel);
+  border: 1px solid var(--color-border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-action-primary);
+  transition: all var(--duration-tactile) var(--ease-tactile);
+}
+
+.connect-action-card:hover .connect-card-icon {
+  background-color: var(--color-action-primary);
+  color: #0f0c0a;
+  border-color: var(--color-action-primary);
+}
+
+.connect-card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.connect-card-platform {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-subtle);
+  margin-bottom: 2px;
+}
+
+.connect-card-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-text-heading);
+  margin-bottom: 2px;
+}
+
+.connect-card-subtitle {
+  font-size: var(--fs-xs);
+  color: var(--color-text-body);
+}
+
+.connect-card-arrow {
+  font-size: 1.25rem;
+  color: var(--color-text-subtle);
+  transition: transform var(--duration-tactile) var(--ease-tactile), color var(--duration-tactile) var(--ease-tactile);
+}
+
+.connect-action-card:hover .connect-card-arrow {
+  transform: translateX(4px);
+  color: var(--color-action-primary);
+}
+
+/* ==========================================================================
+   7. Site Footer & Archival Colophon
+   ======================================================================== */
+.site-footer {
+  background-color: #0a0806;
+  border-top: 1px solid var(--color-border-strong);
+  padding: var(--space-2xl) 0 var(--space-lg);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr 1fr 1.2fr;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-xl);
+}
+
+.footer-brand p {
+  color: var(--color-text-subtle);
+  font-size: var(--fs-sm);
+  max-width: 360px;
+  margin-top: var(--space-xs);
+  line-height: 1.6;
+}
+
+.footer-col-title {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-accent);
+  margin-bottom: var(--space-sm);
+}
+
+.footer-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.footer-list a {
+  color: var(--color-text-body);
+  font-size: var(--fs-sm);
+  transition: color var(--duration-tactile) var(--ease-tactile);
+}
+
+.footer-list a:hover {
+  color: var(--color-action-primary);
+}
+
+/* Developer & Social Links in Footer */
+.social-links-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: var(--space-xs);
+}
+
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.45rem 0.85rem;
+  background-color: var(--color-surface-panel);
+  border: 1px solid var(--color-border-defined);
+  border-radius: var(--radius-btn);
+  color: var(--color-text-body);
+  font-family: var(--font-display);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all var(--duration-tactile) var(--ease-tactile);
+  box-shadow: var(--shadow-tactile-btn);
+}
+
+.social-btn:hover {
+  background-color: var(--color-surface-elevated);
+  border-color: var(--color-action-primary);
+  color: var(--color-text-heading);
+  transform: translateY(-1px);
+}
+
+.social-btn svg {
+  color: var(--color-text-accent);
+  transition: color var(--duration-tactile) var(--ease-tactile);
+}
+
+.social-btn.github:hover svg {
+  color: #fefbf6;
+}
+
+.social-btn.linkedin:hover svg {
+  color: #38bdf8;
+}
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border-subtle);
+  font-size: var(--fs-xs);
+  color: var(--color-text-subtle);
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+/* CRT Scanline Overlay Filter */
+.crt-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.18),
+    rgba(0, 0, 0, 0.18) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.crt-overlay.crt-active {
+  opacity: 1;
+}

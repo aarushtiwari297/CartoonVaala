@@ -1,0 +1,267 @@
+/* ==========================================================================
+   Cartoon Vaala — Base Styles & Global Typography Architecture
+   Human-Crafted Editorial Typography, Solid Surfaces, High Contrast
+   ========================================================================== */
+
+html {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.65;
+  color: var(--color-text-body);
+  background-color: var(--color-surface-canvas);
+  background-image: linear-gradient(180deg, #100c09 0%, #0d0a08 100%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+/* Subtle Film Grain Texture Overlay */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 0);
+  background-size: 20px 20px;
+  pointer-events: none;
+  z-index: var(--z-overlay);
+  opacity: 0.75;
+}
+
+/* ==========================================================================
+   Headings & Display Typography
+   ========================================================================== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--color-text-heading);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  margin-top: 0;
+  margin-bottom: var(--space-xs);
+}
+
+h1 {
+  font-size: var(--fs-hero);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.04;
+}
+
+h2 {
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+h3 {
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+h4 {
+  font-size: var(--fs-h4);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: var(--space-md);
+  color: var(--color-text-body);
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+p.lead {
+  font-size: var(--fs-body-lg);
+  line-height: 1.6;
+  color: var(--color-text-heading);
+}
+
+/* Tiny Metadata Eyebrow paired with Oversized Headlines */
+.meta-supertitle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-subtle);
+  margin-bottom: var(--space-xs);
+}
+
+/* Authentic Handwritten Notes */
+.text-handwritten {
+  font-family: var(--font-handwritten);
+  font-size: 1.45rem;
+  line-height: 1.3;
+  color: var(--color-action-primary);
+}
+
+/* Semantic Text Utilities */
+.text-subtle {
+  color: var(--color-text-subtle);
+}
+
+.text-heading {
+  color: var(--color-text-heading);
+}
+
+.text-accent {
+  color: var(--color-text-accent);
+}
+
+.text-mono {
+  font-family: var(--font-mono);
+}
+
+.highlight-text {
+  color: var(--color-action-primary);
+  font-weight: inherit;
+}
+
+/* ==========================================================================
+   Links & Interactive Focus
+   ========================================================================== */
+a {
+  color: var(--color-status-link);
+  text-decoration: none;
+  transition: color var(--duration-tactile) var(--ease-tactile);
+}
+
+a:hover {
+  color: #7dd3fc;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 3px;
+}
+
+/* ==========================================================================
+   Structural Layout Containers
+   ========================================================================== */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+.container-dense {
+  width: 100%;
+  max-width: var(--container-dense);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+/* Intentional Spacing Rhythms */
+.section {
+  padding-top: var(--space-2xl);
+  padding-bottom: var(--space-2xl);
+  position: relative;
+}
+
+.section-dense {
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-xl);
+}
+
+.section-spacious {
+  padding-top: var(--space-3xl);
+  padding-bottom: var(--space-3xl);
+}
+
+.section-alt {
+  background-color: var(--color-surface-canvas-alt);
+  border-top: 1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+/* ==========================================================================
+   Section Header Stamp / Eyebrow (No Emojis)
+   ========================================================================== */
+.section-header {
+  margin-bottom: var(--space-xl);
+}
+
+.section-header.text-center {
+  text-align: center;
+}
+
+.section-header.text-center .section-tag {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  padding: 3px 9px;
+  background-color: var(--color-surface-sunken);
+  border: 1px solid var(--color-border-defined);
+  border-radius: var(--radius-tag);
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-accent);
+  margin-bottom: var(--space-xs);
+}
+
+.section-title {
+  font-size: var(--fs-h2);
+  margin-bottom: var(--space-xs);
+}
+
+.section-desc {
+  font-size: var(--fs-body-lg);
+  color: var(--color-text-subtle);
+  max-width: 680px;
+  line-height: 1.6;
+}
+
+.section-header.text-center .section-desc {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+::selection {
+  background-color: var(--color-action-primary);
+  color: #0d0a08;
+}

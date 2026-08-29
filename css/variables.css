@@ -1,0 +1,138 @@
+/* ==========================================================================
+   Cartoon Vaala — Semantic Design Tokens & Color Architecture
+   Strict Non-AI Design System: Warm, Tactile, Opaque, Function-Driven Tokens
+   ========================================================================== */
+
+:root {
+  /* ========================================================================
+     1. Semantic Color System — Surfaces (Solid, Opaque, Deep Walnut & Amber)
+     ======================================================================== */
+  --color-surface-canvas: #0f0c0a;         /* Deepest CRT shadow / evening canvas */
+  --color-surface-canvas-alt: #16120e;     /* Warm walnut paneling background */
+  --color-surface-panel: #1e1813;          /* Main structural card & console panel */
+  --color-surface-panel-hover: #27201a;    /* Interactive card hover */
+  --color-surface-sunken: #0b0907;         /* Recessed TV bezel / cassette well / meters */
+  --color-surface-elevated: #2a221b;       /* Raised console shelves & dropdowns */
+  --color-surface-accent-warm: #361f14;    /* Terracotta container tint */
+  --color-surface-highlight: #423528;      /* Physical button bevel highlight */
+
+  /* ========================================================================
+     2. Semantic Color System — Functional Actions & States
+     ======================================================================== */
+  --color-action-primary: #d97706;         /* Saffron / Warm Amber — Primary Call to Action */
+  --color-action-primary-hover: #b45309;   /* Deep Honey Amber */
+  --color-action-primary-active: #92400e;  /* Inset Pressed State */
+  --color-action-primary-text: #0f0c0a;    /* High contrast dark text on primary button */
+
+  --color-action-secondary: #2c241c;       /* Chassis Charcoal — Secondary Action */
+  --color-action-secondary-hover: #3a3026;
+  --color-action-secondary-border: #4d4033;
+  --color-action-secondary-text: #f5eedf;
+
+  --color-action-tertiary: #191410;        /* Subtle Utility Action */
+  --color-action-tertiary-hover: #241d17;
+  --color-action-tertiary-text: #c4b8a5;
+
+  /* ========================================================================
+     3. Semantic Color System — Typography
+     ======================================================================== */
+  --color-text-heading: #fefbf6;           /* Crisp warm alabaster for headers */
+  --color-text-body: #ded5c6;              /* Readable antique linen for paragraphs */
+  --color-text-subtle: #9c907e;            /* Muted dusty newsprint for metadata & timestamps */
+  --color-text-caption: #7d7262;           /* Low-emphasis archival notes */
+  --color-text-accent: #f59e0b;            /* Golden hour emphasis text */
+  --color-text-highlight: #fef08a;         /* Vintage TV phosphor highlight */
+
+  /* ========================================================================
+     4. Semantic Color System — Channel Identities (Real Broadcast Heritage)
+     ======================================================================== */
+  --color-channel-hungama: #d97706;        /* Hungama Orange/Amber */
+  --color-channel-cn: #0284c7;             /* Cartoon Network Blue */
+  --color-channel-pogo: #0d9488;           /* Pogo Retro Teal */
+  --color-channel-jetix: #dc2626;          /* Jetix Action Red */
+  --color-channel-animax: #7c3aed;         /* Animax Deep Violet */
+
+  /* ========================================================================
+     5. Semantic Color System — Broadcast Status & Hardware Indicators
+     ======================================================================== */
+  --color-status-on-air: #22c55e;          /* Green Live On-Air Indicator */
+  --color-status-standby: #eab308;         /* Warm CRT Standby Glow */
+
+  /* ========================================================================
+     6. Semantic Borders & Outlines (Crisp, High-Contrast, No Glowing Meshes)
+     ======================================================================== */
+  --color-border-subtle: rgba(222, 213, 198, 0.12);
+  --color-border-defined: rgba(222, 213, 198, 0.24);
+  --color-border-strong: #544537;
+  --color-border-focus: #f59e0b;
+
+  /* ========================================================================
+     7. Radii Hierarchy (Strictly Varied by Functional Element Type)
+     ======================================================================== */
+  --radius-sharp: 0px;                     /* Grid dividers, technical rules */
+  --radius-meter: 2px;                     /* LED meters, frequency dials, scan stamps */
+  --radius-tag: 4px;                       /* Channel badges, time slot pills */
+  --radius-btn: 6px;                       /* Physical tactile buttons & knobs */
+  --radius-card: 10px;                     /* Editorial content cards */
+  --radius-bezel: 16px;                    /* CRT TV cabinet & Console chassis */
+
+  /* ========================================================================
+     8. Tactile Elevation & Shadows (Realistic Mechanical Insets & Depth)
+     ======================================================================== */
+  --shadow-tactile-btn: 0 2px 0 #120e0a, 0 4px 10px rgba(0, 0, 0, 0.5);
+  --shadow-tactile-btn-pressed: inset 0 2px 4px rgba(0, 0, 0, 0.7);
+  --shadow-chassis: 0 16px 40px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.4);
+
+  /* ========================================================================
+     9. Typography Tokens (Distinctive Two-Font System + Variable Capability)
+     ======================================================================== */
+  --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-handwritten: 'Caveat', cursive;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+
+  /* Font Scale */
+  --fs-hero: clamp(2.4rem, 4.5vw + 1rem, 4.2rem);
+  --fs-h2: clamp(1.85rem, 3vw + 0.5rem, 2.75rem);
+  --fs-h3: clamp(1.3rem, 1.8vw + 0.3rem, 1.75rem);
+  --fs-h4: 1.15rem;
+  --fs-body-lg: clamp(1.05rem, 0.8vw + 0.5rem, 1.2rem);
+  --fs-body: 1rem;
+  --fs-sm: 0.875rem;
+  --fs-xs: 0.75rem;
+  --fs-micro: 0.6875rem;
+
+  /* ========================================================================
+     10. Intentional Spacing Scale (Varying Rhythm across Sections)
+     ======================================================================== */
+  --space-2xs: 0.25rem;   /* 4px */
+  --space-xs: 0.5rem;     /* 8px */
+  --space-sm: 0.75rem;    /* 12px */
+  --space-md: 1.25rem;    /* 20px */
+  --space-lg: 2rem;       /* 32px */
+  --space-xl: 3.5rem;     /* 56px */
+  --space-2xl: 5.5rem;    /* 88px */
+  --space-3xl: 7.5rem;    /* 120px */
+
+  /* Layout Container */
+  --container-max: 1260px;
+  --container-dense: 1040px;
+  --container-padding: 1.5rem;
+
+  /* ========================================================================
+     11. Motion Timing & Custom Cubic Bézier Easing Curves
+     ======================================================================== */
+  --ease-tactile: cubic-bezier(0.2, 0, 0, 1);
+  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-instant: 120ms;
+  --duration-tactile: 200ms;
+  --duration-smooth: 400ms;
+
+  /* Z-Index Hierarchy */
+  --z-base: 1;
+  --z-panel: 10;
+  --z-overlay: 50;
+  --z-header: 100;
+  --z-modal: 200;
+}
