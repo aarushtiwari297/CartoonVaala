@@ -92,13 +92,13 @@
   --font-handwritten: 'Caveat', cursive;
   --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
 
-  /* Font Scale */
-  --fs-hero: clamp(2.4rem, 4.5vw + 1rem, 4.2rem);
-  --fs-h2: clamp(1.85rem, 3vw + 0.5rem, 2.75rem);
-  --fs-h3: clamp(1.3rem, 1.8vw + 0.3rem, 1.75rem);
-  --fs-h4: 1.15rem;
-  --fs-body-lg: clamp(1.05rem, 0.8vw + 0.5rem, 1.2rem);
-  --fs-body: 1rem;
+  /* Fluid Responsive Font Scale */
+  --fs-hero: clamp(1.85rem, 5.5vw + 0.5rem, 4rem);
+  --fs-h2: clamp(1.4rem, 3.2vw + 0.4rem, 2.5rem);
+  --fs-h3: clamp(1.15rem, 2vw + 0.3rem, 1.7rem);
+  --fs-h4: clamp(1rem, 1.2vw + 0.2rem, 1.25rem);
+  --fs-body-lg: clamp(1rem, 0.8vw + 0.4rem, 1.18rem);
+  --fs-body: 0.95rem;
   --fs-sm: 0.875rem;
   --fs-xs: 0.75rem;
   --fs-micro: 0.6875rem;
@@ -111,14 +111,14 @@
   --space-sm: 0.75rem;    /* 12px */
   --space-md: 1.25rem;    /* 20px */
   --space-lg: 2rem;       /* 32px */
-  --space-xl: 3.5rem;     /* 56px */
-  --space-2xl: 5.5rem;    /* 88px */
-  --space-3xl: 7.5rem;    /* 120px */
+  --space-xl: 3.25rem;    /* 52px */
+  --space-2xl: 4.75rem;   /* 76px */
+  --space-3xl: 6.5rem;    /* 104px */
 
   /* Layout Container */
   --container-max: 1260px;
   --container-dense: 1040px;
-  --container-padding: 1.5rem;
+  --container-padding: clamp(1rem, 3.5vw, 1.75rem);
 
   /* ========================================================================
      11. Motion Timing & Custom Cubic Bézier Easing Curves

@@ -39,8 +39,6 @@
     shuffleBtn: document.getElementById('player-shuffle-btn'),
     volumeSlider: document.getElementById('player-volume-slider'),
     volumeBtn: document.getElementById('player-volume-btn'),
-    playlistList: document.getElementById('player-playlist-list'),
-    trackCount: document.getElementById('player-track-count'),
     crtToggleBtn: document.getElementById('crt-toggle-btn'),
     crtOverlay: document.querySelector('.crt-overlay')
   };
@@ -56,41 +54,7 @@
   }
 
   // ==========================================================================
-  // 2. Render Master Playlist Drawer
-  // ==========================================================================
-  function renderPlaylist() {
-    if (!dom.playlistList) return;
-    dom.playlistList.innerHTML = '';
-
-    state.playlist.forEach((track, idx) => {
-      const li = document.createElement('li');
-      li.className = `playlist-track-item ${idx === state.currentIndex ? 'active' : ''}`;
-      li.setAttribute('data-index', idx);
-      li.setAttribute('role', 'button');
-      li.setAttribute('tabindex', '0');
-
-      li.innerHTML = `
-        <span class="playlist-item-num">${(idx + 1).toString().padStart(2, '0')}</span>
-        <div class="playlist-item-meta">
-          <div class="playlist-item-title">${track.title}</div>
-          <div class="playlist-item-channel">${track.channel || 'Classic'}</div>
-        </div>
-      `;
-
-      li.addEventListener('click', () => {
-        loadAndPlayTrack(idx, true);
-      });
-
-      dom.playlistList.appendChild(li);
-    });
-
-    if (dom.trackCount) {
-      dom.trackCount.textContent = `${state.playlist.length} Master Tapes`;
-    }
-  }
-
-  // ==========================================================================
-  // 3. Update Visual Player Console State
+  // 2. Update Visual Player Console State
   // ==========================================================================
   function updatePlayerUI() {
     const track = state.playlist[state.currentIndex];
@@ -139,19 +103,7 @@
       }
     });
 
-    // 5. Sync Active Playlist Item
-    if (dom.playlistList) {
-      const items = dom.playlistList.querySelectorAll('.playlist-track-item');
-      items.forEach((item, idx) => {
-        if (idx === state.currentIndex) {
-          item.classList.add('active');
-        } else {
-          item.classList.remove('active');
-        }
-      });
-    }
-
-    // 6. Sync Active Transmission Dial Node
+    // 5. Sync Active Transmission Dial Node
     const dialNodes = document.querySelectorAll('.dial-slot-node');
     dialNodes.forEach((node) => {
       const cartoonTarget = node.getAttribute('data-cartoon');
@@ -398,7 +350,6 @@
   };
 
   // Initial Load
-  renderPlaylist();
   initEvents();
   loadAndPlayTrack(0, false);
 })();

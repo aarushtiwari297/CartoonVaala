@@ -647,91 +647,6 @@
   cursor: pointer;
 }
 
-/* Playlist Section */
-.player-playlist-section {
-  margin-top: var(--space-sm);
-  padding-top: var(--space-xs);
-  border-top: 1px solid var(--color-border-subtle);
-}
-
-.player-playlist-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: var(--space-xs);
-}
-
-.player-playlist-title {
-  font-size: var(--fs-xs);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--color-text-subtle);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin: 0;
-}
-
-.playlist-track-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 6px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  max-height: 140px;
-  overflow-y: auto;
-}
-
-.playlist-track-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 8px;
-  background-color: var(--color-surface-sunken);
-  border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-tag);
-  cursor: pointer;
-  transition: all var(--duration-tactile) var(--ease-tactile);
-}
-
-.playlist-track-item:hover {
-  background-color: var(--color-surface-elevated);
-  border-color: var(--color-border-defined);
-}
-
-.playlist-track-item.active {
-  background-color: #2e1a10;
-  border-color: var(--color-action-primary);
-}
-
-.playlist-item-num {
-  font-family: var(--font-mono);
-  font-size: var(--fs-micro);
-  color: var(--color-text-subtle);
-  min-width: 16px;
-}
-
-.playlist-item-meta {
-  flex: 1;
-  min-width: 0;
-}
-
-.playlist-item-title {
-  font-size: var(--fs-xs);
-  font-weight: 600;
-  color: var(--color-text-heading);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.playlist-item-channel {
-  font-size: var(--fs-micro);
-  font-family: var(--font-mono);
-  color: var(--color-text-accent);
-}
 
 /* ==========================================================================
    4. Afternoon Transmission Dial / Timeline Strip (Lightweight & Tactile)
@@ -871,6 +786,10 @@
   margin-bottom: var(--space-xl);
 }
 
+.editorial-spotlight.editorial-spotlight-reversed {
+  grid-template-columns: 1fr 1.2fr;
+}
+
 .spotlight-media {
   position: relative;
   aspect-ratio: 16 / 10;
@@ -913,7 +832,7 @@
 /* Side Showcase Cards (Asymmetric 2-column with Varied Weights) */
 .asymmetric-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   gap: var(--space-md);
 }
 

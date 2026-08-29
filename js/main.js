@@ -1,6 +1,6 @@
 /* ==========================================================================
    Cartoon Vaala — Main Interactive Orchestrator
-   Navigation, Header Scroll States, BGM Sync, Crisp Scroll Reveals
+   Navigation, Mobile Menu Drawer, Header Scroll States, BGM Sync, Crisp Scroll Reveals
    ========================================================================== */
 
 (function () {
@@ -16,27 +16,40 @@
 
   window.addEventListener('scroll', () => {
     if (!header) return;
-    if (window.scrollY > 40) {
+    if (window.scrollY > 30) {
       header.classList.add('scrolled');
     } else {
       header.classList.remove('scrolled');
     }
   }, { passive: true });
 
+  function closeMobileNav() {
+    if (mainNav && menuToggle) {
+      mainNav.classList.remove('open');
+      menuToggle.classList.remove('active');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+  }
+
   if (menuToggle && mainNav) {
     menuToggle.addEventListener('click', () => {
       const isOpen = mainNav.classList.toggle('open');
       menuToggle.classList.toggle('active', isOpen);
       menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      document.body.style.overflow = isOpen ? 'hidden' : '';
     });
 
     navLinks.forEach((link) => {
-      link.addEventListener('click', () => {
-        mainNav.classList.remove('open');
-        menuToggle.classList.remove('active');
-        menuToggle.setAttribute('aria-expanded', 'false');
-      });
+      link.addEventListener('click', closeMobileNav);
     });
+
+    // Close mobile menu on resize to desktop width
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768) {
+        closeMobileNav();
+      }
+    }, { passive: true });
   }
 
   // Header BGM Toggle Buttons
@@ -64,7 +77,7 @@
           }
         });
       },
-      { rootMargin: '0px 0px -40px 0px', threshold: 0.08 }
+      { rootMargin: '0px 0px -30px 0px', threshold: 0.05 }
     );
 
     revealElements.forEach((el) => observer.observe(el));
