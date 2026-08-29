@@ -119,19 +119,38 @@
             <div class="player-layout">
               <!-- CRT Screen & Channel Badge -->
               <div class="player-screen-col">
-                <div class="player-tv-bezel" id="player-image-frame">
+                <div class="player-tv-bezel crt-warmup" id="player-image-frame">
                   <img src="Images/Doremon.jpg" alt="Doraemon Broadcast Still" class="player-cartoon-image" id="player-cartoon-image" width="200" height="150">
-                  <div class="player-screen-badge-overlay">
+                  <div class="tv-static-layer" id="tv-static-layer" aria-hidden="true"></div>
+                  
+                  <!-- Retro Indian Cable TV Color Bars Test Screen (Easter Egg) -->
+                  <div class="tv-colorbars-screen" id="tv-colorbars" aria-hidden="true">
+                    <div class="colorbars-bars">
+                      <div class="colorbar bar-white"></div>
+                      <div class="colorbar bar-yellow"></div>
+                      <div class="colorbar bar-cyan"></div>
+                      <div class="colorbar bar-green"></div>
+                      <div class="colorbar bar-magenta"></div>
+                      <div class="colorbar bar-red"></div>
+                      <div class="colorbar bar-blue"></div>
+                    </div>
+                    <div class="colorbars-footer">
+                      <div class="colorbars-message">NO SIGNAL • CABLE OPERATOR TUNING FEED</div>
+                      <button class="colorbars-btn-restore" id="colorbars-restore-btn">RESTORE BROADCAST</button>
+                    </div>
+                  </div>
+
+                  <div class="player-screen-badge-overlay" id="player-badge-overlay" title="Channel Badge (Double-click for Cable Test Pattern)">
                     <span class="player-channel-tag" id="player-channel-badge">Hungama TV</span>
                   </div>
                   <div class="player-tv-scanlines" aria-hidden="true"></div>
                 </div>
                 <div class="player-tv-footer-controls">
-                  <span class="player-live-badge">
-                    <span class="live-dot" aria-hidden="true"></span>
-                    <span>RECEIVER TUNED</span>
+                  <span class="player-live-badge" id="player-live-badge">
+                    <span class="live-dot live-on-air-pulse" id="player-status-dot" aria-hidden="true"></span>
+                    <span id="player-receiver-status">RECEIVER LOCKED</span>
                   </span>
-                  <span class="text-mono" style="font-size: var(--fs-micro); color: var(--color-text-accent);">CH-04</span>
+                  <span class="text-mono" id="player-channel-code" style="font-size: var(--fs-micro); color: var(--color-text-accent);">CH-04</span>
                 </div>
               </div>
 
@@ -607,17 +626,20 @@
     </section>
 
     <!-- ======================================================================
-         7. Archival Closing Reflection
+         7. Archival Closing Reflection & Broadcast Sign-Off
          ====================================================================== -->
-    <section class="section section-spacious" id="closing" aria-label="Closing Reflection">
+    <section class="section section-spacious" id="closing" aria-label="Closing Reflection & Sign-Off">
       <div class="container" style="text-align: center;">
-        <div class="section-tag" style="margin-bottom: var(--space-xs);">Perpetual Memory</div>
-        <h2 style="font-size: var(--fs-h2); max-width: 720px; margin: 0 auto var(--space-sm);">
+        <div class="section-tag" style="margin-bottom: var(--space-xs);">BROADCAST SIGN-OFF • 20:00 IST</div>
+        <h2 style="font-size: var(--fs-h2); max-width: 760px; margin: 0 auto var(--space-sm);">
           The cathode tube never truly cooled down.
         </h2>
-        <p class="lead" style="max-width: 640px; margin: 0 auto var(--space-lg); color: var(--color-text-subtle);">
-          Decades pass, jobs change, and technology advances, but that specific sensation of sitting cross-legged on the floor at 4:00 PM remains an eternal home inside all of us.
+        <p class="lead" style="max-width: 660px; margin: 0 auto var(--space-md); color: var(--color-text-subtle);">
+          Mummy has called for dinner twice. The math homework copy is still blank on the dining table. Decades pass, but that specific joy of sitting cross-legged at 4:00 PM remains an eternal home inside all of us.
         </p>
+        <div class="text-handwritten" style="font-size: 1.5rem; margin-bottom: var(--space-lg); color: var(--color-action-primary);">
+          "Same time tomorrow at 4:00 PM?"
+        </div>
         <div style="display: flex; gap: var(--space-sm); justify-content: center; flex-wrap: wrap;">
           <button class="btn btn-primary bgm-toggle" aria-pressed="false">
             <span>Play Broadcast Audio</span>
@@ -690,7 +712,7 @@
 
       <div class="footer-bottom">
         <div>
-          © Cartoon Vaala Archive • Designed and built with human intention by Aarush Tiwari.
+          © Cartoon Vaala Archive • Handcrafted with human soul by Aarush Tiwari.
         </div>
         <div class="text-subtle">
           All animated character rights belong to their respective creators, animators, and network distributors.
@@ -698,6 +720,21 @@
       </div>
     </div>
   </footer>
+
+  <!-- Persistent Floating TV Broadcast Pill (Visible when scrolled away from Hero TV) -->
+  <aside class="persistent-broadcast-pill" id="broadcast-pill" aria-label="Live Television Broadcast Indicator">
+    <div class="broadcast-pill-live">
+      <span class="live-dot live-on-air-pulse" aria-hidden="true"></span>
+      <span id="pill-status-text">ON AIR</span>
+    </div>
+    <div class="broadcast-pill-info">
+      <div class="broadcast-pill-title" id="pill-track-title">Doraemon Title Track</div>
+      <div class="broadcast-pill-meta" id="pill-channel-tag">CH-04 HUNGAMA</div>
+    </div>
+    <a href="#nostalgic-player" class="broadcast-pill-btn" aria-label="Jump to Television Monitor Deck">
+      Tune Monitor
+    </a>
+  </aside>
 
   <!-- Master JavaScript Architecture -->
   <script src="js/tracks.js"></script>

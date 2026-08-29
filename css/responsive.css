@@ -500,6 +500,31 @@
     gap: var(--space-xs);
     font-size: var(--fs-xs);
   }
+
+  /* --- Persistent Floating Broadcast Pill Mobile Sizing --- */
+  .persistent-broadcast-pill {
+    bottom: 14px;
+    right: 14px;
+    padding: 5px 10px 5px 6px;
+    gap: 8px;
+  }
+
+  .broadcast-pill-info {
+    max-width: 110px;
+  }
+
+  .broadcast-pill-title {
+    font-size: 0.72rem;
+  }
+
+  .broadcast-pill-meta {
+    font-size: 0.625rem;
+  }
+
+  .broadcast-pill-btn {
+    padding: 3px 8px;
+    font-size: 0.625rem;
+  }
 }
 
 /* ==========================================================================

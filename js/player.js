@@ -1,6 +1,7 @@
 /* ==========================================================================
-   Cartoon Vaala — HTML5 Audio Engine & Master CRT TV Sync
-   Tactile Transport Controls, EPG Station Tuning, Non-Repeating Shuffle
+   Cartoon Vaala — HTML5 Audio Engine & Master CRT Television Sync
+   Tactile Channel Tuning, 350ms Analog Static Transitions, EPG Wave Sync
+   Indian 2000s Cable TV Receiver Simulation & Color Bars Easter Egg
    ========================================================================== */
 
 (function () {
@@ -15,6 +16,9 @@
     volume: 0.85,
     isShuffle: true,
     isSeeking: false,
+    isTuning: false,
+    isTestPattern: false,
+    tuningTimeout: null,
     history: []
   };
 
@@ -25,10 +29,18 @@
   // Cached DOM References
   const dom = {
     chassis: document.getElementById('nostalgic-player'),
+    imageFrame: document.getElementById('player-image-frame'),
     cartoonName: document.getElementById('player-cartoon-name'),
     trackTitle: document.getElementById('player-track-title'),
     channelBadge: document.getElementById('player-channel-badge'),
+    badgeOverlay: document.getElementById('player-badge-overlay'),
+    channelCode: document.getElementById('player-channel-code'),
+    receiverStatus: document.getElementById('player-receiver-status'),
+    statusDot: document.getElementById('player-status-dot'),
     cartoonImage: document.getElementById('player-cartoon-image'),
+    staticLayer: document.getElementById('tv-static-layer'),
+    colorbars: document.getElementById('tv-colorbars'),
+    colorbarsRestoreBtn: document.getElementById('colorbars-restore-btn'),
     currentTime: document.getElementById('player-current-time'),
     duration: document.getElementById('player-duration'),
     progressBar: document.getElementById('player-progress-bar'),
@@ -40,11 +52,15 @@
     volumeSlider: document.getElementById('player-volume-slider'),
     volumeBtn: document.getElementById('player-volume-btn'),
     crtToggleBtn: document.getElementById('crt-toggle-btn'),
-    crtOverlay: document.querySelector('.crt-overlay')
+    crtOverlay: document.querySelector('.crt-overlay'),
+    broadcastPill: document.getElementById('broadcast-pill'),
+    pillTrackTitle: document.getElementById('pill-track-title'),
+    pillChannelTag: document.getElementById('pill-channel-tag'),
+    pillStatusText: document.getElementById('pill-status-text')
   };
 
   // ==========================================================================
-  // 1. Time Formatting Helper
+  // 1. Time Formatting & Lightweight Web Audio Click Helper
   // ==========================================================================
   function formatTime(seconds) {
     if (isNaN(seconds) || seconds < 0) return '0:00';
@@ -53,34 +69,58 @@
     return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
   }
 
+  // Subtle analog cathode channel click (Pure Web Audio API, Zero external audio asset)
+  let audioCtx = null;
+  function playRelayClick() {
+    try {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(440, audioCtx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(120, audioCtx.currentTime + 0.04);
+      gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+      gain.gain.linearRampToValueAtTime(0.001, audioCtx.currentTime + 0.04);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.04);
+    } catch (e) {
+      // Gracefully ignore if AudioContext not permitted before user gesture
+    }
+  }
+
   // ==========================================================================
-  // 2. Update Visual Player Console State
+  // 2. Update Visual Player Console & Persistent State
   // ==========================================================================
   function updatePlayerUI() {
     const track = state.playlist[state.currentIndex];
     if (!track) return;
 
     // 1. Update Text Metadata
-    if (dom.cartoonName) dom.cartoonName.textContent = track.cartoon;
+    if (dom.cartoonName) dom.cartoonName.textContent = track.displayName || track.cartoon;
     if (dom.trackTitle) dom.trackTitle.textContent = track.title;
     if (dom.channelBadge) dom.channelBadge.textContent = track.channel || 'TV Broadcast';
+    if (dom.channelCode) dom.channelCode.textContent = track.channelCode || 'CH-04';
 
-    // 2. Smoothly Transition CRT Still Image
-    if (dom.cartoonImage && track.image) {
-      if (dom.cartoonImage.getAttribute('src') !== track.image) {
-        dom.cartoonImage.classList.add('image-transitioning');
-        setTimeout(() => {
-          dom.cartoonImage.src = track.image;
-          dom.cartoonImage.alt = `${track.cartoon} TV Broadcast Still`;
-          dom.cartoonImage.classList.remove('image-transitioning');
-        }, 150);
+    // 2. Sync Receiver Status
+    const isPlaying = !audio.paused && !state.isTestPattern;
+    state.isPlaying = isPlaying;
+
+    if (!state.isTuning && !state.isTestPattern) {
+      if (dom.receiverStatus) dom.receiverStatus.textContent = isPlaying ? 'RECEIVER LOCKED' : 'STANDBY';
+      if (dom.statusDot) {
+        dom.statusDot.className = isPlaying ? 'live-dot live-on-air-pulse' : 'live-dot';
+        dom.statusDot.style.backgroundColor = isPlaying ? 'var(--color-status-on-air)' : 'var(--color-status-standby)';
       }
     }
 
-    // 3. Sync Play/Pause Button State
-    const isPlaying = !audio.paused;
-    state.isPlaying = isPlaying;
-
+    // 3. Sync Play/Pause Transport Button State
     if (dom.playPauseBtn) {
       dom.playPauseBtn.setAttribute('aria-label', isPlaying ? 'Pause Broadcast' : 'Play Broadcast');
       dom.playPauseBtn.innerHTML = isPlaying
@@ -95,7 +135,7 @@
       if (isPlaying) {
         btn.classList.add('playing');
         btn.setAttribute('aria-pressed', 'true');
-        if (label) label.textContent = 'Audio Active';
+        if (label) label.textContent = 'Playing';
       } else {
         btn.classList.remove('playing');
         btn.setAttribute('aria-pressed', 'false');
@@ -103,24 +143,36 @@
       }
     });
 
-    // 5. Sync Active Transmission Dial Node
+    // 5. Sync Active Transmission Dial Slot
     const dialNodes = document.querySelectorAll('.dial-slot-node');
     dialNodes.forEach((node) => {
       const cartoonTarget = node.getAttribute('data-cartoon');
       const trackIdTarget = node.getAttribute('data-track-id');
       if (trackIdTarget === track.id || (cartoonTarget && cartoonTarget.toLowerCase() === track.cartoon.toLowerCase())) {
         node.classList.add('active');
+        node.setAttribute('aria-current', 'true');
       } else {
         node.classList.remove('active');
+        node.removeAttribute('aria-current');
       }
     });
+
+    // 6. Sync Persistent Broadcast Pill
+    if (dom.pillTrackTitle) dom.pillTrackTitle.textContent = track.title;
+    if (dom.pillChannelTag) dom.pillChannelTag.textContent = `${track.channelCode || 'CH-04'} • ${track.channel || 'TV'}`;
+    if (dom.pillStatusText) dom.pillStatusText.textContent = isPlaying ? 'ON AIR' : 'PAUSED';
   }
 
   // ==========================================================================
-  // 4. Track Playback Controls
+  // 3. CRT Television Channel Tuning Sequence (350ms Analog Static Experience)
   // ==========================================================================
-  function loadAndPlayTrack(index, autoPlay = true) {
+  function tuneChannel(index, autoPlay = true) {
     if (index < 0 || index >= state.playlist.length) return;
+
+    // Dismiss Test Pattern if active
+    if (state.isTestPattern) {
+      toggleTestPattern(false);
+    }
 
     if (state.currentIndex !== index) {
       state.history.push(state.currentIndex);
@@ -129,37 +181,80 @@
 
     state.currentIndex = index;
     const track = state.playlist[state.currentIndex];
+    state.isTuning = true;
 
-    audio.src = track.audio;
-    audio.load();
+    // Trigger Physical Relay Click
+    playRelayClick();
 
-    updatePlayerUI();
-
-    if (autoPlay) {
-      const playPromise = audio.play();
-      if (playPromise !== undefined) {
-        playPromise
-          .then(() => {
-            updatePlayerUI();
-          })
-          .catch((err) => {
-            console.warn('[CartoonPlayer] Autoplay prevented by browser:', err);
-            updatePlayerUI();
-          });
-      }
+    // 1. Enter CRT Tuning State: Static Layer & Amber Receiver Pulse
+    if (dom.imageFrame) {
+      dom.imageFrame.classList.add('tuning');
     }
+    if (dom.cartoonImage) {
+      dom.cartoonImage.classList.add('image-transitioning');
+    }
+    if (dom.receiverStatus) {
+      dom.receiverStatus.textContent = 'TUNING WAVE...';
+    }
+    if (dom.statusDot) {
+      dom.statusDot.className = 'live-dot receiver-tuning-pulse';
+      dom.statusDot.style.backgroundColor = 'var(--color-status-standby)';
+    }
+
+    // Clear previous tuning timer if rapid clicking occurs
+    if (state.tuningTimeout) {
+      clearTimeout(state.tuningTimeout);
+    }
+
+    // 2. Lock onto Signal after 300ms Static Burst
+    state.tuningTimeout = setTimeout(() => {
+      if (dom.cartoonImage && track.image) {
+        dom.cartoonImage.src = track.image;
+        dom.cartoonImage.alt = `${track.displayName || track.cartoon} Broadcast Still`;
+        dom.cartoonImage.classList.remove('image-transitioning');
+      }
+
+      if (dom.imageFrame) {
+        dom.imageFrame.classList.remove('tuning');
+      }
+
+      state.isTuning = false;
+
+      // Update Audio Source & Play
+      audio.src = track.audio;
+      audio.load();
+
+      updatePlayerUI();
+
+      if (autoPlay) {
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+          playPromise
+            .then(() => {
+              updatePlayerUI();
+            })
+            .catch((err) => {
+              console.warn('[CartoonPlayer] Autoplay prevented by browser:', err);
+              updatePlayerUI();
+            });
+        }
+      }
+    }, 320);
   }
 
+  // ==========================================================================
+  // 4. Track Playback Controls
+  // ==========================================================================
   function playNextTrack() {
     if (state.isShuffle && state.playlist.length > 1) {
       let nextIndex;
       do {
         nextIndex = Math.floor(Math.random() * state.playlist.length);
       } while (nextIndex === state.currentIndex);
-      loadAndPlayTrack(nextIndex, true);
+      tuneChannel(nextIndex, true);
     } else {
       const nextIndex = (state.currentIndex + 1) % state.playlist.length;
-      loadAndPlayTrack(nextIndex, true);
+      tuneChannel(nextIndex, true);
     }
   }
 
@@ -171,14 +266,17 @@
 
     if (state.history.length > 0) {
       const prevIndex = state.history.pop();
-      loadAndPlayTrack(prevIndex, true);
+      tuneChannel(prevIndex, true);
     } else {
       const prevIndex = (state.currentIndex - 1 + state.playlist.length) % state.playlist.length;
-      loadAndPlayTrack(prevIndex, true);
+      tuneChannel(prevIndex, true);
     }
   }
 
   function togglePlayPause() {
+    if (state.isTestPattern) {
+      toggleTestPattern(false);
+    }
     if (audio.paused) {
       audio.play().then(updatePlayerUI).catch(console.warn);
     } else {
@@ -188,7 +286,34 @@
   }
 
   // ==========================================================================
-  // 5. Timeline Scrubber Logic
+  // 5. Easter Egg: Cable TV SMPTE Color Bars Screen
+  // ==========================================================================
+  function toggleTestPattern(forcedState) {
+    const shouldBeActive = typeof forcedState === 'boolean' ? forcedState : !state.isTestPattern;
+    state.isTestPattern = shouldBeActive;
+
+    if (dom.colorbars) {
+      dom.colorbars.classList.toggle('active', shouldBeActive);
+    }
+
+    if (shouldBeActive) {
+      audio.pause();
+      if (dom.receiverStatus) dom.receiverStatus.textContent = 'NO SIGNAL • CABLE TEST';
+      if (dom.statusDot) {
+        dom.statusDot.className = 'live-dot receiver-tuning-pulse';
+        dom.statusDot.style.backgroundColor = '#ef4444';
+      }
+      if (dom.playPauseBtn) {
+        dom.playPauseBtn.innerHTML = '<span style="font-size:1.1rem; line-height:1;">▶</span> <span>Resume</span>';
+      }
+    } else {
+      updatePlayerUI();
+      audio.play().catch(() => {});
+    }
+  }
+
+  // ==========================================================================
+  // 6. Timeline Scrubber Logic
   // ==========================================================================
   function updateProgress() {
     if (state.isSeeking || isNaN(audio.duration) || audio.duration === 0) return;
@@ -204,7 +329,7 @@
   }
 
   // ==========================================================================
-  // 6. Audio Element Event Listeners
+  // 7. Audio Element Event Listeners
   // ==========================================================================
   audio.addEventListener('timeupdate', updateProgress);
   audio.addEventListener('play', updatePlayerUI);
@@ -216,7 +341,7 @@
   });
 
   // ==========================================================================
-  // 7. Physical Hardware Control Bindings
+  // 8. Physical Hardware Control Bindings & Keyboard Shortcuts
   // ==========================================================================
   function initEvents() {
     if (dom.playPauseBtn) dom.playPauseBtn.addEventListener('click', togglePlayPause);
@@ -280,7 +405,15 @@
       });
     }
 
-    // Global Keyboard Shortcuts
+    // Color Bars Easter Egg Trigger
+    if (dom.badgeOverlay) {
+      dom.badgeOverlay.addEventListener('dblclick', () => toggleTestPattern());
+    }
+    if (dom.colorbarsRestoreBtn) {
+      dom.colorbarsRestoreBtn.addEventListener('click', () => toggleTestPattern(false));
+    }
+
+    // Global Keyboard Shortcuts (Nostalgic Hardware Remote)
     document.addEventListener('keydown', (e) => {
       const tag = e.target.tagName.toLowerCase();
       if (tag === 'input' || tag === 'textarea') return;
@@ -290,14 +423,24 @@
         togglePlayPause();
       } else if (e.key === 'm' || e.key === 'M') {
         if (dom.volumeBtn) dom.volumeBtn.click();
+      } else if (e.key === 'c' || e.key === 'C') {
+        if (dom.crtToggleBtn) dom.crtToggleBtn.click();
+      } else if (e.key === 't' || e.key === 'T') {
+        toggleTestPattern();
       } else if (e.key === 'ArrowRight' && e.altKey) {
         playNextTrack();
       } else if (e.key === 'ArrowLeft' && e.altKey) {
         playPrevTrack();
+      } else if (['1', '2', '3', '4', '5', '6', '7'].includes(e.key)) {
+        // Direct Channel Tuning Numbers 1 through 7
+        const channelIndex = parseInt(e.key, 10) - 1;
+        if (channelIndex < state.playlist.length) {
+          tuneChannel(channelIndex, true);
+        }
       }
     });
 
-    // Broadcast Schedule & Transmission Dial Node Delegation
+    // Delegation for all Tune Buttons & Dial Slots across the page
     document.addEventListener('click', (e) => {
       const tuneBtn = e.target.closest('.btn-tune, .dial-slot-node');
       if (tuneBtn) {
@@ -313,7 +456,7 @@
   }
 
   // ==========================================================================
-  // 8. Public API
+  // 9. Public API
   // ==========================================================================
   window.CartoonPlayer = {
     play: () => {
@@ -325,10 +468,12 @@
     toggle: togglePlayPause,
     next: playNextTrack,
     prev: playPrevTrack,
+    tuneChannel: tuneChannel,
+    toggleTestPattern: toggleTestPattern,
     playTrackById: (trackId) => {
       const idx = state.playlist.findIndex((t) => t.id === trackId);
       if (idx !== -1) {
-        loadAndPlayTrack(idx, true);
+        tuneChannel(idx, true);
         const playerSec = document.getElementById('nostalgic-player');
         if (playerSec) {
           playerSec.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -340,7 +485,7 @@
         (t) => t.cartoon.toLowerCase() === cartoonKey.toLowerCase()
       );
       if (idx !== -1) {
-        loadAndPlayTrack(idx, true);
+        tuneChannel(idx, true);
         const playerSec = document.getElementById('nostalgic-player');
         if (playerSec) {
           playerSec.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -349,7 +494,7 @@
     }
   };
 
-  // Initial Load
+  // Initial Load (Cathode Ray Startup)
   initEvents();
-  loadAndPlayTrack(0, false);
+  tuneChannel(0, false);
 })();

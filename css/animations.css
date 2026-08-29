@@ -1,6 +1,7 @@
 /* ==========================================================================
    Cartoon Vaala — Purposeful Motion & Micro-Interactions
-   No Generic Slow Fades, Function-Driven Transitions, Reduced Motion Compliant
+   Tactile Analog Transitions, CRT Cathode Warm-Up, Channel Switch Static
+   Reduced Motion Compliant
    ========================================================================== */
 
 /* Landmark Scroll Reveals (Fast, Crisp, High-Performance) */
@@ -22,27 +23,126 @@
 .delay-2 { transition-delay: 0.16s; }
 .delay-3 { transition-delay: 0.24s; }
 
-/* CRT Screen Power Turn-On Animation */
-@keyframes tv-turn-on {
+/* CRT Cathode Ray Tube Initial Power-On Warm-Up (0.9s Bloom) */
+@keyframes cathode-warmup {
   0% {
-    transform: scale(0.98);
-    filter: brightness(0.2) contrast(1.8);
-    opacity: 0.2;
+    filter: brightness(0) contrast(2);
+    transform: scaleY(0.005) scaleX(0.7);
+    opacity: 0.8;
   }
-  50% {
-    transform: scale(1.005);
-    filter: brightness(1.3) contrast(1.1);
-    opacity: 0.9;
+  40% {
+    filter: brightness(2.5) contrast(1.5);
+    transform: scaleY(0.01) scaleX(1);
+    opacity: 1;
+  }
+  60% {
+    filter: brightness(1.6) contrast(1.2);
+    transform: scaleY(1) scaleX(1.02);
+    opacity: 0.95;
+  }
+  85% {
+    filter: brightness(0.9) contrast(1.05);
+    transform: scale(0.995);
+    opacity: 1;
   }
   100% {
-    transform: scale(1);
     filter: brightness(1) contrast(1);
+    transform: scale(1);
     opacity: 1;
   }
 }
 
-.tv-on-animate {
-  animation: tv-turn-on 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+.crt-warmup {
+  animation: cathode-warmup 0.85s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+/* 350ms Channel Tuning Signal Static Distortion */
+@keyframes tuning-static-flicker {
+  0% {
+    opacity: 0.9;
+    transform: translate(0, 0) scale(1);
+    filter: brightness(1.4) contrast(1.6);
+  }
+  25% {
+    opacity: 0.95;
+    transform: translate(-2px, 1px) scale(1.01);
+    filter: brightness(1.8) contrast(2);
+  }
+  50% {
+    opacity: 0.85;
+    transform: translate(2px, -1px) scale(0.99);
+    filter: brightness(0.7) contrast(1.8);
+  }
+  75% {
+    opacity: 0.95;
+    transform: translate(-1px, -2px) scale(1.01);
+    filter: brightness(1.5) contrast(1.4);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(0, 0) scale(1);
+    filter: brightness(1) contrast(1);
+  }
+}
+
+.tuning-active {
+  animation: tuning-static-flicker 0.35s steps(4, end) forwards;
+}
+
+/* Live Receiver On-Air Pulse */
+@keyframes on-air-glow {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 6px var(--color-status-on-air);
+  }
+  50% {
+    opacity: 0.65;
+    box-shadow: 0 0 2px var(--color-status-on-air);
+  }
+}
+
+.live-on-air-pulse {
+  animation: on-air-glow 2.5s infinite ease-in-out;
+}
+
+/* Tuning Signal Search Pulse (Amber) */
+@keyframes tuning-pulse-glow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    background-color: var(--color-status-standby);
+    box-shadow: 0 0 8px var(--color-status-standby);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.85);
+    background-color: #f59e0b;
+    box-shadow: 0 0 2px #f59e0b;
+  }
+}
+
+.receiver-tuning-pulse {
+  animation: tuning-pulse-glow 0.6s infinite ease-in-out;
+}
+
+/* Equalizer Bars Rhythm */
+@keyframes eq-bounce-1 {
+  0%, 100% { height: 3px; }
+  50% { height: 12px; }
+}
+@keyframes eq-bounce-2 {
+  0%, 100% { height: 11px; }
+  50% { height: 4px; }
+}
+@keyframes eq-bounce-3 {
+  0%, 100% { height: 5px; }
+  50% { height: 13px; }
+}
+
+/* Developer Pulse Glow */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
 }
 
 /* Reduced Motion Compliance */
@@ -59,5 +159,16 @@
   .reveal-on-scroll {
     opacity: 1 !important;
     transform: none !important;
+  }
+
+  .crt-warmup {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .tuning-active {
+    animation: none !important;
+    opacity: 0 !important;
   }
 }

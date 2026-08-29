@@ -1,6 +1,7 @@
 /* ==========================================================================
    Cartoon Vaala — Main Interactive Orchestrator
-   Navigation, Mobile Menu Drawer, Header Scroll States, BGM Sync, Crisp Scroll Reveals
+   Navigation, Mobile Menu Drawer, Header Scroll States, BGM Sync,
+   Crisp Scroll Reveals & Persistent Broadcast State Monitor
    ========================================================================== */
 
 (function () {
@@ -63,7 +64,32 @@
   });
 
   // ==========================================================================
-  // 2. Crisp Landmark Scroll Reveals
+  // 2. Persistent Floating Broadcast Status Observer
+  // ==========================================================================
+  const broadcastPill = document.getElementById('broadcast-pill');
+  const heroPlayer = document.getElementById('nostalgic-player');
+
+  if (broadcastPill && heroPlayer && 'IntersectionObserver' in window) {
+    const playerObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          // If the hero TV deck is visible in viewport, hide floating pill;
+          // When user scrolls past it, show floating pill.
+          if (entry.isIntersecting) {
+            broadcastPill.classList.remove('visible');
+          } else {
+            broadcastPill.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    playerObserver.observe(heroPlayer);
+  }
+
+  // ==========================================================================
+  // 3. Crisp Landmark Scroll Reveals
   // ==========================================================================
   const revealElements = document.querySelectorAll('.reveal-on-scroll');
 

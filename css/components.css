@@ -408,19 +408,115 @@
   border: 2px solid #3d3126;
   border-radius: var(--radius-tag);
   overflow: hidden;
-  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.9);
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.95);
 }
 
 .player-cartoon-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: opacity 0.3s ease, filter 0.3s ease;
+  transition: opacity 0.25s ease, filter 0.25s ease, transform 0.25s ease;
 }
 
 .player-cartoon-image.image-transitioning {
-  opacity: 0.3;
-  filter: blur(2px);
+  opacity: 0.25;
+  filter: blur(2px) contrast(1.4);
+}
+
+/* Analog CRT Static Noise Overlay Layer (during channel change) */
+.tv-static-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle, rgba(255, 255, 255, 0.3) 10%, transparent 70%),
+    repeating-radial-gradient(#fff 0 0.0001%, #000 0 0.0002%);
+  background-size: 100% 100%, 3px 3px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 5;
+  transition: opacity 0.1s ease;
+}
+
+.player-tv-bezel.tuning .tv-static-layer {
+  opacity: 0.92;
+  animation: tuning-static-flicker 0.35s steps(4, end) forwards;
+}
+
+/* Retro Indian Cable TV Color Bars Screen (Easter Egg) */
+.tv-colorbars-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 6;
+  display: none;
+  flex-direction: column;
+  background: #000;
+}
+
+.tv-colorbars-screen.active {
+  display: flex;
+}
+
+.colorbars-bars {
+  display: flex;
+  height: 70%;
+  width: 100%;
+}
+
+.colorbar {
+  flex: 1;
+}
+.colorbar.bar-white { background: #f5f5f5; }
+.colorbar.bar-yellow { background: #eab308; }
+.colorbar.bar-cyan { background: #06b6d4; }
+.colorbar.bar-green { background: #22c55e; }
+.colorbar.bar-magenta { background: #ec4899; }
+.colorbar.bar-red { background: #ef4444; }
+.colorbar.bar-blue { background: #3b82f6; }
+
+.colorbars-footer {
+  height: 30%;
+  background: #0d0a08;
+  border-top: 2px solid #2a221b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  text-align: center;
+}
+
+.colorbars-message {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  font-weight: 700;
+  color: #fef08a;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  animation: pulse-glow 1.2s infinite ease-in-out;
+}
+
+.colorbars-btn-restore {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  color: var(--color-action-primary);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--color-action-primary);
+  padding: 2px 8px;
+  border-radius: 2px;
+  cursor: pointer;
+  margin-top: 3px;
+  transition: all var(--duration-instant) var(--ease-tactile);
+}
+
+.colorbars-btn-restore:hover {
+  background: var(--color-action-primary);
+  color: #000;
 }
 
 .player-screen-badge-overlay {
@@ -428,6 +524,7 @@
   top: 6px;
   left: 6px;
   z-index: 2;
+  cursor: pointer;
 }
 
 .player-channel-tag {
@@ -442,6 +539,12 @@
   text-transform: uppercase;
   color: var(--color-action-primary);
   letter-spacing: 0.04em;
+  transition: background-color var(--duration-instant) var(--ease-tactile);
+}
+
+.player-channel-tag:hover {
+  background-color: var(--color-surface-panel-hover);
+  border-color: var(--color-action-primary);
 }
 
 .player-tv-scanlines {
@@ -452,8 +555,8 @@
   height: 100%;
   background: repeating-linear-gradient(
     0deg,
-    rgba(0, 0, 0, 0.25),
-    rgba(0, 0, 0, 0.25) 1px,
+    rgba(0, 0, 0, 0.22),
+    rgba(0, 0, 0, 0.22) 1px,
     transparent 1px,
     transparent 2px
   );
@@ -482,6 +585,8 @@
   height: 6px;
   border-radius: 50%;
   background-color: var(--color-status-on-air);
+  box-shadow: 0 0 6px var(--color-status-on-air);
+  transition: background-color var(--duration-instant) ease;
 }
 
 /* Audio Console Controls */
@@ -739,6 +844,23 @@
 
 .dial-slot-node:hover .dial-tune-indicator {
   color: var(--color-action-primary);
+}
+
+.dial-slot-node.active {
+  background-color: #2b180d;
+  border-color: var(--color-action-primary);
+  box-shadow: 0 0 14px rgba(217, 119, 6, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.dial-slot-node.active .dial-tune-indicator {
+  color: var(--color-action-primary);
+  font-weight: 800;
+}
+
+.dial-slot-node.active .dial-tune-indicator span:first-child::before {
+  content: "● ";
+  color: var(--color-status-on-air);
+  animation: on-air-glow 2s infinite ease-in-out;
 }
 
 .channel-pill {
@@ -1263,3 +1385,101 @@
 .crt-overlay.crt-active {
   opacity: 1;
 }
+
+/* ==========================================================================
+   8. Persistent Floating Broadcast Pill (Non-Intrusive Bottom Status)
+   ========================================================================== */
+.persistent-broadcast-pill {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: var(--z-overlay);
+  background-color: rgba(22, 18, 14, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--color-border-defined);
+  border-radius: 9999px;
+  padding: 6px 14px 6px 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  pointer-events: none;
+  transition: opacity 0.3s var(--ease-tactile), transform 0.3s var(--ease-tactile);
+}
+
+.persistent-broadcast-pill.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.broadcast-pill-live {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 8px;
+  background-color: var(--color-surface-sunken);
+  border-radius: 9999px;
+  border: 1px solid var(--color-border-subtle);
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  font-weight: 700;
+  color: var(--color-status-on-air);
+}
+
+.broadcast-pill-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  max-width: 140px;
+}
+
+.broadcast-pill-title {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--color-text-heading);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
+}
+
+.broadcast-pill-meta {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  color: var(--color-text-accent);
+  line-height: 1.2;
+}
+
+.broadcast-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 12px;
+  background-color: var(--color-action-primary);
+  color: #0f0c0a;
+  border-radius: 9999px;
+  font-family: var(--font-display);
+  font-size: var(--fs-micro);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  border: 1px solid #f59e0b;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  transition: all var(--duration-instant) var(--ease-tactile);
+}
+
+.broadcast-pill-btn:hover {
+  background-color: var(--color-action-primary-hover);
+  color: #000;
+  transform: translateY(-1px);
+}
+
+.broadcast-pill-btn:active {
+  transform: translateY(1px);
+}
+
