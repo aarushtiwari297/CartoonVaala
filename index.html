@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cartoon Vaala — An Archival Tribute to Indian Television's Golden Cartoon Era</title>
-  <meta name="description" content="A handcrafted nostalgic archive commemorating the 4:00 PM golden hour, CRT televisions, Hungama TV, Cartoon Network India, and after-school cartoon memories.">
-  
-  <!-- Google Fonts: Outfit (Display) & Plus Jakarta Sans (Body) & Caveat (Handwritten) -->
+  <meta name="description"
+    content="A handcrafted nostalgic archive commemorating the 4:00 PM golden hour, CRT televisions, Hungama TV, Cartoon Network India, and after-school cartoon memories.">
+
+  <!-- Google Fonts: Outfit (Display), Plus Jakarta Sans (Body) & Caveat (Handwritten) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
   <!-- CSS Stylesheet Hierarchy -->
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/variables.css">
@@ -20,19 +24,20 @@
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/responsive.css">
 </head>
+
 <body>
 
   <!-- Optional CRT Scanline Overlay Filter -->
   <div class="crt-overlay" aria-hidden="true"></div>
 
   <!-- ========================================================================
-       1. Site Header & Station Status Navigation
+       1. Site Header & Primary Navigation
        ======================================================================== -->
   <header class="site-header" id="header">
     <div class="container header-container">
       <div class="brand-link">
-        <a href="#hero" aria-label="Cartoon Vaala Home">
-          <img src="Assests/Logo.png" alt="Cartoon Vaala Archive" class="brand-logo" width="160" height="46">
+        <a href="#watch" aria-label="Cartoon Vaala Home">
+          <img src="Assests/Logo.png" alt="Cartoon Vaala Archive" class="brand-logo" width="160" height="42">
         </a>
         <div class="brand-station-tag">
           <span class="status-dot-on-air" aria-hidden="true"></span>
@@ -40,13 +45,12 @@
         </div>
       </div>
 
-      <nav class="site-nav" id="main-nav" aria-label="Main Navigation">
+      <!-- Primary Destinations: WATCH, REMEMBER (Separate Page), CARTOONS -->
+      <nav class="site-nav" id="main-nav" aria-label="Primary Navigation">
         <ul class="nav-list">
-          <li><a href="#hero" class="nav-link">Television Deck</a></li>
-          <li><a href="#about" class="nav-link">The Feeling</a></li>
-          <li><a href="#schedule" class="nav-link">Broadcast Wave</a></li>
-          <li><a href="#spotlight" class="nav-link">Cartoon Hall</a></li>
-          <li><a href="#curator" class="nav-link">Curator's Desk</a></li>
+          <li><a href="#watch" class="nav-link">WATCH</a></li>
+          <li><a href="remember.html" class="nav-link">REMEMBER</a></li>
+          <li><a href="#cartoons" class="nav-link">CARTOONS</a></li>
         </ul>
       </nav>
 
@@ -62,7 +66,8 @@
         </button>
 
         <!-- Mobile Hamburger Menu Button -->
-        <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle navigation menu">
+        <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-nav"
+          aria-label="Toggle navigation menu">
           <span></span>
           <span></span>
           <span></span>
@@ -73,35 +78,36 @@
 
   <main>
     <!-- ======================================================================
-         2. Hero Section: Asymmetric Stage & Integrated TV Tuner Console
+         2. WATCH — Central Television Stage & Master Receiver Console (Centered)
          ====================================================================== -->
-    <section class="hero-section" id="hero" aria-label="Television Broadcast Stage">
-      <!-- High-resolution unblurred childhood TV artwork backdrop -->
+    <section class="hero-section" id="watch" aria-label="Television Broadcast Stage">
+      <!-- Unblurred childhood TV artwork backdrop -->
       <div class="hero-backdrop" aria-hidden="true"></div>
 
       <div class="container hero-container">
-        <!-- Left Column: Editorial Manifesto -->
+        <!-- Centered Editorial Manifesto -->
         <div class="hero-narrative-col reveal-on-scroll">
           <div class="hero-lead-badge">
-            <span>TRANSMISSION CODE: 4:00 PM SLOT</span>
+            <span>AFTER-SCHOOL TRANSMISSION • 4:00 PM SLOT</span>
           </div>
           <h1 class="hero-title">
             The school bell rang. <span class="highlight-text">Childhood began.</span>
           </h1>
           <p class="hero-tagline">
-            Before algorithms, notifications, and endless feeds, after-school happiness was measured in 30-minute broadcast blocks, wooden TV trolleys, and cold Rooh Afza in stainless steel glasses.
+            Before algorithms and notifications, after-school joy was measured in 30-minute broadcast blocks, wooden TV
+            trolleys, and cold Rooh Afza in stainless steel glasses.
           </p>
           <div class="hero-actions-row">
-            <a href="#schedule" class="btn btn-primary">
-              Tune Broadcast Wave
+            <a href="remember.html" class="btn btn-primary">
+              Relive 4:00 PM
             </a>
-            <a href="#spotlight" class="btn btn-secondary">
-              Explore Cartoons
+            <a href="#cartoons" class="btn btn-secondary">
+              Browse Cartoons
             </a>
           </div>
         </div>
 
-        <!-- Right Column: Integrated CRT TV & Audio Tuner Deck -->
+        <!-- Centered CRT TV & Audio Tuner Deck -->
         <div class="hero-player-wrap" id="nostalgic-player">
           <div class="player-chassis">
             <!-- Hardware Top Bar -->
@@ -111,7 +117,8 @@
                 <span class="hero-tag-sep">•</span>
                 <span class="hero-tag-quote">Direct Master Audio Feed</span>
               </div>
-              <button class="sound-btn" id="crt-toggle-btn" aria-pressed="false" title="Toggle Analog CRT Scanline Filter">
+              <button class="sound-btn" id="crt-toggle-btn" aria-pressed="false"
+                title="Toggle Analog CRT Scanline Filter">
                 CRT FILTER: OFF
               </button>
             </div>
@@ -120,9 +127,10 @@
               <!-- CRT Screen & Channel Badge -->
               <div class="player-screen-col">
                 <div class="player-tv-bezel crt-warmup" id="player-image-frame">
-                  <img src="Images/Doremon.jpg" alt="Doraemon Broadcast Still" class="player-cartoon-image" id="player-cartoon-image" width="200" height="150">
+                  <img src="Images/Doremon.jpg" alt="Doraemon Broadcast Still" class="player-cartoon-image"
+                    id="player-cartoon-image" width="220" height="165">
                   <div class="tv-static-layer" id="tv-static-layer" aria-hidden="true"></div>
-                  
+
                   <!-- Retro Indian Cable TV Color Bars Test Screen (Easter Egg) -->
                   <div class="tv-colorbars-screen" id="tv-colorbars" aria-hidden="true">
                     <div class="colorbars-bars">
@@ -140,7 +148,8 @@
                     </div>
                   </div>
 
-                  <div class="player-screen-badge-overlay" id="player-badge-overlay" title="Channel Badge (Double-click for Cable Test Pattern)">
+                  <div class="player-screen-badge-overlay" id="player-badge-overlay"
+                    title="Channel Badge (Double-click for Cable Test Pattern)">
                     <span class="player-channel-tag" id="player-channel-badge">Hungama TV</span>
                   </div>
                   <div class="player-tv-scanlines" aria-hidden="true"></div>
@@ -150,7 +159,8 @@
                     <span class="live-dot live-on-air-pulse" id="player-status-dot" aria-hidden="true"></span>
                     <span id="player-receiver-status">RECEIVER LOCKED</span>
                   </span>
-                  <span class="text-mono" id="player-channel-code" style="font-size: var(--fs-micro); color: var(--color-text-accent);">CH-04</span>
+                  <span class="text-mono" id="player-channel-code"
+                    style="font-size: var(--fs-micro); color: var(--color-text-accent);">CH-04</span>
                 </div>
               </div>
 
@@ -168,7 +178,8 @@
                 <div class="player-timeline-wrap">
                   <div class="player-scrubber-track">
                     <div class="player-scrubber-fill" id="player-progress-fill"></div>
-                    <input type="range" class="player-progress-input" id="player-progress-bar" min="0" max="100" value="0" step="0.1" aria-label="Seek track position">
+                    <input type="range" class="player-progress-input" id="player-progress-bar" min="0" max="100"
+                      value="0" step="0.1" aria-label="Seek track position">
                   </div>
                   <div class="player-time-display">
                     <span id="player-current-time">0:00</span>
@@ -179,32 +190,39 @@
                 <!-- Hardware Transport Buttons -->
                 <div class="player-main-controls">
                   <div class="player-btn-group">
-                    <button class="player-btn-secondary active" id="player-shuffle-btn" title="Toggle Non-Repeating Shuffle" aria-pressed="true" aria-label="Toggle Shuffle">
+                    <button class="player-btn-secondary active" id="player-shuffle-btn"
+                      title="Toggle Non-Repeating Shuffle" aria-pressed="true" aria-label="Toggle Shuffle">
                       🔀
                     </button>
-                    <button class="player-btn-secondary" id="player-prev-btn" title="Previous Track" aria-label="Previous Track">
+                    <button class="player-btn-secondary" id="player-prev-btn" title="Previous Track"
+                      aria-label="Previous Track">
                       ⏮
                     </button>
                     <button class="player-btn-play" id="player-play-pause-btn" aria-label="Play Broadcast">
                       <span style="font-size:1.1rem; line-height:1;">▶</span>
                       <span>Play Track</span>
                     </button>
-                    <button class="player-btn-secondary" id="player-next-btn" title="Next Track" aria-label="Next Track">
+                    <button class="player-btn-secondary" id="player-next-btn" title="Next Track"
+                      aria-label="Next Track">
                       ⏭
                     </button>
                   </div>
 
                   <!-- Volume Controls -->
                   <div class="player-volume-control">
-                    <button class="sound-btn" id="player-volume-btn" title="Mute Volume" aria-label="Mute or Unmute" style="padding: 0.3rem 0.5rem;">
+                    <button class="sound-btn" id="player-volume-btn" title="Mute Volume" aria-label="Mute or Unmute"
+                      style="padding: 0.35rem 0.6rem;">
                       🔊
                     </button>
-                    <input type="range" class="player-volume-slider" id="player-volume-slider" min="0" max="1" step="0.05" value="0.85" aria-label="Master Volume">
+                    <input type="range" class="player-volume-slider" id="player-volume-slider" min="0" max="1"
+                      step="0.05" value="0.85" aria-label="Master Volume">
                   </div>
                 </div>
 
-                <div class="text-subtle" style="font-size: var(--fs-micro); margin-top: 4px;">
-                  <span>Hardware Key: Press <kbd style="background: var(--color-surface-sunken); padding: 1px 5px; border-radius: 3px; border: 1px solid var(--color-border-defined); color: var(--color-text-accent);">Space</kbd> to Play / Pause</span>
+                <div class="text-subtle" style="font-size: var(--fs-micro); margin-top: 6px;">
+                  <span>Hardware Key: Press <kbd
+                      style="background: var(--color-surface-sunken); padding: 1px 6px; border-radius: 3px; border: 1px solid var(--color-border-defined); color: var(--color-text-accent);">Space</kbd>
+                    to Play / Pause</span>
                 </div>
               </div>
             </div>
@@ -214,26 +232,27 @@
     </section>
 
     <!-- ======================================================================
-         3. Narrative Essay: The 4:00 PM Golden Hour
+         3. REMEMBER — The 4:00 PM Golden Hour & Nostalgic Library Portal
          ====================================================================== -->
-    <section class="section section-spacious section-alt" id="about" aria-label="The 4:00 PM Golden Hour">
+    <section class="section section-spacious section-alt" id="remember" aria-label="The 4:00 PM Golden Hour Memories">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header text-center">
           <div class="section-tag">Archival Retrospective</div>
           <h2 class="section-title">The After-School Golden Hour</h2>
           <p class="section-desc">
-            A precise cultural chronicle of Indian households between 1998 and 2008, where television viewing was a communal ritual grounded in strict schedules.
+            A cultural chronicle of Indian households between 1998 and 2008. The three magical hours before evening homework began.
           </p>
         </div>
 
         <div class="narrative-grid">
+          <!-- Left Column: Core Narrative Essay -->
           <div class="narrative-essay reveal-on-scroll">
             <h3 style="margin-bottom: var(--space-sm); color: var(--color-text-accent);">The Physics of 4:00 PM</h3>
             <p>
               The final double-chime school bell meant only one thing: an all-out sprint to the bicycle stand. You pedaled through colony streets before the opening bars of the 4:30 PM anime block began.
             </p>
             <p>
-              Backpacks were hurled onto the sofa. Black Bata shoes were unbuckled with a single kick. The wooden cabinet housing the 21-inch Onida CRT TV was unlocked, its cathode tube warming up with an unmistakable high-frequency static hum.
+              Backpacks were hurled onto the sofa. Black Bata shoes were unbuckled with a single kick. The wooden cabinet housing the 21-inch Onida CRT TV was unlocked, its cathode tube warming up with an unmistakable static hum.
             </p>
             <p>
               For the next three uninterrupted hours, before parents returned or evening math tuition began, the entire universe was contained within four cathode corners.
@@ -243,193 +262,130 @@
             </div>
           </div>
 
-          <div class="rituals-stack reveal-on-scroll delay-1">
-            <div class="ritual-item">
-              <div class="ritual-time-stamp">4:05</div>
-              <div class="ritual-body">
-                <strong>Dropping the Heavy School Bag</strong>
-                <p>Leaving unresolved algebraic fractions and history dates on the dining table for tomorrow morning.</p>
+          <!-- Right Column: Interactive Memory Stepper -->
+          <div class="memory-stepper reveal-on-scroll delay-1" id="memory-stepper">
+            <!-- Step 1 -->
+            <div class="memory-step-node active" data-memory-step="1" tabindex="0" role="button" aria-label="4:00 PM The School Bell Sprint">
+              <div class="memory-step-header">
+                <span class="memory-step-time">4:00 PM</span>
+                <span class="text-mono" style="font-size: var(--fs-micro); color: var(--color-text-accent);">THE BELL</span>
+              </div>
+              <strong class="memory-step-title">The School Bell Sprint & Bata Shoes</strong>
+              <p class="memory-step-body">
+                The sound of the final bell echoing down the corridor, sprinting to the cycle stand, and kicking off dusty black Bata shoes the second you crossed the front door.
+              </p>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="memory-step-node" data-memory-step="2" tabindex="0" role="button" aria-label="4:05 PM Dropping the heavy school bag">
+              <div class="memory-step-header">
+                <span class="memory-step-time">4:05 PM</span>
+                <span class="text-mono" style="font-size: var(--fs-micro); color: var(--color-text-accent);">THE BAG DROP</span>
+              </div>
+              <strong class="memory-step-title">Dropping the Heavy School Bag</strong>
+              <p class="memory-step-body">
+                Leaving unresolved algebraic fractions, Hindi cursive copy, and history dates on the dining table for tomorrow morning.
+              </p>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="memory-step-node" data-memory-step="3" tabindex="0" role="button" aria-label="4:15 PM The Rooh Afza and Parle-G ration">
+              <div class="memory-step-header">
+                <span class="memory-step-time">4:15 PM</span>
+                <span class="text-mono" style="font-size: var(--fs-micro); color: var(--color-text-accent);">THE RATION</span>
+              </div>
+              <strong class="memory-step-title">The Rooh Afza & Parle-G Ration</strong>
+              <p class="memory-step-body">
+                Sweet rose syrup in a cold stainless steel glass with water droplets dripping onto the table, paired with biscuits dunked for precisely two seconds before breaking.
+              </p>
+            </div>
+
+            <!-- Step 4: Live Broadcast Link -->
+            <div class="memory-step-node" data-memory-step="4" tabindex="0" role="button" aria-label="4:30 PM The remote fight">
+              <div class="memory-step-header">
+                <span class="memory-step-time">4:30 PM</span>
+                <span class="text-mono" style="font-size: var(--fs-micro); color: var(--color-action-primary);">CARTOON TIME</span>
+              </div>
+              <strong class="memory-step-title">The Chunnu-Munnu Remote Negotiation</strong>
+              <p class="memory-step-body">
+                Siblings fighting for custody of the remote between Hungama TV (Shinchan) and Cartoon Network. 
+              </p>
+              <div class="memory-step-action">
+                <span class="text-subtle" style="font-size: var(--fs-micro);">Live Broadcast Link</span>
+                <button class="btn-tune" data-cartoon="Shinchan" data-track-id="shinchan-1" aria-label="Tune 4:30 PM Shinchan broadcast">
+                  ▶ Tune 4:30 PM Shinchan
+                </button>
               </div>
             </div>
 
-            <div class="ritual-item">
-              <div class="ritual-time-stamp">4:15</div>
-              <div class="ritual-body">
-                <strong>The Rooh Afza & Parle-G Ration</strong>
-                <p>Sweet rose syrup mixed into ice-cold water, paired with biscuits dunked for precisely two seconds before breaking.</p>
+            <!-- Step 5 -->
+            <div class="memory-step-node" data-memory-step="5" tabindex="0" role="button" aria-label="6:00 PM Streetlight cricket curfew">
+              <div class="memory-step-header">
+                <span class="memory-step-time">6:00 PM</span>
+                <span class="text-mono" style="font-size: var(--fs-micro); color: var(--color-text-accent);">CURFEW</span>
               </div>
-            </div>
-
-            <div class="ritual-item">
-              <div class="ritual-time-stamp">4:30</div>
-              <div class="ritual-body">
-                <strong>The Chunnu-Munnu Remote Negotiation</strong>
-                <p>Siblings negotiating territorial custody of the television remote between Hungama TV and Cartoon Network.</p>
-              </div>
-            </div>
-
-            <div class="ritual-item">
-              <div class="ritual-time-stamp">6:00</div>
-              <div class="ritual-body">
-                <strong>Street Light Curfew Trigger</strong>
-                <p>Racing outside for colony cricket the second the commercial break hit, returning only when sodium streetlights flickered on.</p>
-              </div>
+              <strong class="memory-step-title">Street Light Cricket Curfew Trigger</strong>
+              <p class="memory-step-body">
+                Racing outside for colony gully cricket the moment the commercial break hit, returning only when the yellow sodium streetlights flickered on.
+              </p>
             </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- ======================================================================
-         4. Afternoon Transmission Dial (Lightweight & Interactive)
-         ====================================================================== -->
-    <section class="section section-dense" id="schedule" aria-label="Broadcast Transmission Dial">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-tag">Transmission Dial</div>
-          <h2 class="section-title">The 4:00 PM Broadcast Wave</h2>
-          <p class="section-desc">
-            The canonical after-school television sequence (16:00 — 19:30 IST). Click any slot to immediately lock onto that channel feed.
+        <!-- Dedicated Portal Card to Photographic Time Capsule on remember.html -->
+        <div class="reveal-on-scroll" style="margin-top: var(--space-xl); background: linear-gradient(135deg, rgba(26, 20, 15, 0.95) 0%, rgba(13, 11, 9, 0.98) 100%); border: 1px solid var(--color-border-defined); border-radius: var(--radius-bezel); padding: var(--space-xl); text-align: center; box-shadow: var(--shadow-chassis);">
+          <div class="section-tag" style="margin-bottom: var(--space-2xs);">Dedicated Digital Time Capsule</div>
+          <h3 style="font-size: clamp(1.4rem, 4vw, 1.85rem); margin-bottom: var(--space-xs); color: var(--color-text-heading);">
+            Step Inside the Complete Nostalgic Library
+          </h3>
+          <p style="max-width: 580px; margin: 0 auto var(--space-md); color: var(--color-text-body); font-size: var(--fs-body); line-height: 1.65;">
+            Explore 13 curated 1:1 childhood memories with authentic photography — Cheetos Pokémon Tazos, Natraj geometry boxes, Brick Games, cold Rooh Afza, and Nokia Snake.
           </p>
+          <a href="remember.html" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px;">
+            <span>✨ Open Nostalgic Library (13 Memories)</span>
+            <span style="font-size: 1.1rem;">→</span>
+          </a>
         </div>
 
-        <div class="transmission-dial-container reveal-on-scroll">
-          <div class="transmission-timeline-grid">
-            <!-- Slot 1: Doraemon -->
-            <button class="dial-slot-node" data-cartoon="Doremon" data-track-id="doremon-1" aria-label="Tune Doraemon at 16:00 IST">
-              <div class="dial-slot-header">
-                <span class="dial-time">16:00 IST</span>
-                <span class="channel-pill hungama">CH-04 HUNGAMA</span>
-              </div>
-              <div class="dial-slot-body">
-                <strong class="dial-title">Doraemon</strong>
-                <span class="dial-dub-note">Sonal Kaushal & Simaran Kaur Cast</span>
-              </div>
-              <div class="dial-tune-indicator">
-                <span>▶ Tune Feed</span>
-                <span class="text-mono">01</span>
-              </div>
-            </button>
-
-            <!-- Slot 2: Shinchan -->
-            <button class="dial-slot-node" data-cartoon="Shinchan" data-track-id="shinchan-1" aria-label="Tune Shinchan at 16:30 IST">
-              <div class="dial-slot-header">
-                <span class="dial-time">16:30 IST</span>
-                <span class="channel-pill hungama">CH-04 HUNGAMA</span>
-              </div>
-              <div class="dial-slot-body">
-                <strong class="dial-title">Shinchan</strong>
-                <span class="dial-dub-note">Akanksha Sharma Hindi Dub</span>
-              </div>
-              <div class="dial-tune-indicator">
-                <span>▶ Tune Feed</span>
-                <span class="text-mono">02</span>
-              </div>
-            </button>
-
-            <!-- Slot 3: Pokémon -->
-            <button class="dial-slot-node" data-cartoon="Pokemon" data-track-id="pokemon-1" aria-label="Tune Pokémon at 17:00 IST">
-              <div class="dial-slot-header">
-                <span class="dial-time">17:00 IST</span>
-                <span class="channel-pill cn">CH-08 CN</span>
-              </div>
-              <div class="dial-slot-body">
-                <strong class="dial-title">Pokémon Indigo</strong>
-                <span class="dial-dub-note">150 Kanto Region Badge Quest</span>
-              </div>
-              <div class="dial-tune-indicator">
-                <span>▶ Tune Feed</span>
-                <span class="text-mono">03</span>
-              </div>
-            </button>
-
-            <!-- Slot 4: Ninja Hattori -->
-            <button class="dial-slot-node" data-cartoon="NinjaHathori" data-track-id="ninjahathori-1" aria-label="Tune Ninja Hattori at 17:30 IST">
-              <div class="dial-slot-header">
-                <span class="dial-time">17:30 IST</span>
-                <span class="channel-pill hungama">CH-04 HUNGAMA</span>
-              </div>
-              <div class="dial-slot-body">
-                <strong class="dial-title">Ninja Hattori</strong>
-                <span class="dial-dub-note">"Ding Ding Ding!" Iga Ninjutsu</span>
-              </div>
-              <div class="dial-tune-indicator">
-                <span>▶ Tune Feed</span>
-                <span class="text-mono">04</span>
-              </div>
-            </button>
-
-            <!-- Slot 5: Oggy -->
-            <button class="dial-slot-node" data-cartoon="Oggy" data-track-id="oggy-1" aria-label="Tune Oggy at 18:00 IST">
-              <div class="dial-slot-header">
-                <span class="dial-time">18:00 IST</span>
-                <span class="channel-pill cn">CH-08 CN</span>
-              </div>
-              <div class="dial-slot-body">
-                <strong class="dial-title">Oggy & Cockroaches</strong>
-                <span class="dial-dub-note">Saurav Chakraborty Mimicry</span>
-              </div>
-              <div class="dial-tune-indicator">
-                <span>▶ Tune Feed</span>
-                <span class="text-mono">05</span>
-              </div>
-            </button>
-
-            <!-- Slot 6: Tom & Jerry -->
-            <button class="dial-slot-node" data-cartoon="Tom&Jerry" data-track-id="tomjerry-1" aria-label="Tune Tom and Jerry at 18:30 IST">
-              <div class="dial-slot-header">
-                <span class="dial-time">18:30 IST</span>
-                <span class="channel-pill cn">CH-08 CN</span>
-              </div>
-              <div class="dial-slot-body">
-                <strong class="dial-title">Tom & Jerry</strong>
-                <span class="dial-dub-note">Scott Bradley Orchestral Slapstick</span>
-              </div>
-              <div class="dial-tune-indicator">
-                <span>▶ Tune Feed</span>
-                <span class="text-mono">06</span>
-              </div>
-            </button>
-
-            <!-- Slot 7: Chhota Bheem -->
-            <button class="dial-slot-node" data-cartoon="Bheem" data-track-id="bheem-1" aria-label="Tune Chhota Bheem at 19:00 IST">
-              <div class="dial-slot-header">
-                <span class="dial-time">19:00 IST</span>
-                <span class="channel-pill pogo">CH-06 POGO</span>
-              </div>
-              <div class="dial-slot-body">
-                <strong class="dial-title">Chhota Bheem</strong>
-                <span class="dial-dub-note">Dholakpur Flagship Hero</span>
-              </div>
-              <div class="dial-tune-indicator">
-                <span>▶ Tune Feed</span>
-                <span class="text-mono">07</span>
-              </div>
-            </button>
-          </div>
-        </div>
       </div>
     </section>
 
     <!-- ======================================================================
-         5. Editorial Showcases & Character Retrospectives (Asymmetric Variety)
+         4. CARTOONS — Master Cartoon Archive with Network Filtering
          ====================================================================== -->
-    <section class="section section-spacious section-alt" id="spotlight" aria-label="Editorial Retrospectives">
+    <section class="section section-spacious section-alt" id="cartoons" aria-label="Master Cartoon Archive">
       <div class="container">
-        <div class="section-header">
-          <div class="section-tag">Critical Retrospectives</div>
+        <div class="section-header text-center">
+          <div class="section-tag">Master Cartoon Archive</div>
           <h2 class="section-title">The Pillars of After-School Television</h2>
           <p class="section-desc">
-            Examining the narrative structure, Hindi localization excellence, and lasting emotional imprint of key animated franchises.
+            Filter by television network to explore the animation, Hindi localization excellence, and lasting emotional
+            imprint of key franchises.
           </p>
+        </div>
+
+        <!-- Network Filter Bar -->
+        <div class="archive-filter-bar reveal-on-scroll">
+          <button class="filter-tab active" data-filter="all">
+            <span>📺 All Networks (7)</span>
+          </button>
+          <button class="filter-tab" data-filter="hungama">
+            <span>Hungama TV</span>
+          </button>
+          <button class="filter-tab" data-filter="cn">
+            <span>Cartoon Network</span>
+          </button>
+          <button class="filter-tab" data-filter="pogo">
+            <span>Pogo TV</span>
+          </button>
         </div>
 
         <!-- Featured Dual Column Editorial Spotlight 1: Doraemon -->
-        <div class="editorial-spotlight reveal-on-scroll">
+        <div class="editorial-spotlight reveal-on-scroll" data-network="hungama" data-cartoon="Doremon">
           <div class="spotlight-media">
             <img src="Images/Doremon.jpg" alt="Doraemon and Nobita" width="600" height="375">
             <div class="spotlight-meta-badge">
-              <span class="channel-pill hungama">Hungama TV • 2005 Masterpiece</span>
+              <span class="channel-pill hungama">Hungama TV • CH-04</span>
             </div>
           </div>
           <div class="spotlight-content">
@@ -439,21 +395,25 @@
               "Nobita, whether you succeed or fail is not written in stone. It depends entirely on your effort today."
             </div>
             <p>
-              Unlike western superhero narratives predicated on invincible power, Fujiko F. Fujio's masterpiece was deeply human. Nobita Nobi was neither athletic nor academically gifted; he was clumsy, procrastinated endlessly, and relied on a futuristic robotic cat with a 4D pocket.
+              Unlike western superhero narratives predicated on invincible power, Fujiko F. Fujio's masterpiece was
+              deeply human. Nobita Nobi was neither athletic nor academically gifted; he was clumsy, procrastinated
+              endlessly, and relied on a futuristic robotic cat with a 4D pocket.
             </p>
             <p>
-              Every gadget — from the Bamboo Copter to the Memory Bread — functioned as a parable on unintended consequences and character resilience.
+              Every gadget — from the Bamboo Copter to the Memory Bread — functioned as a parable on unintended
+              consequences and character resilience.
             </p>
-            <div>
-              <button class="btn btn-secondary btn-sm btn-tune" data-cartoon="Doremon" data-track-id="doremon-1">
-                Tune Doraemon Theme (Audio)
+            <div style="display: flex; gap: 8px; align-items: center; margin-top: var(--space-xs);">
+              <button class="btn btn-primary btn-sm btn-tune" data-cartoon="Doremon" data-track-id="doremon-1">
+                ▶ Tune Doraemon Channel
               </button>
             </div>
           </div>
         </div>
 
         <!-- Featured Dual Column Editorial Spotlight 2: Shinchan -->
-        <div class="editorial-spotlight editorial-spotlight-reversed reveal-on-scroll delay-1">
+        <div class="editorial-spotlight editorial-spotlight-reversed reveal-on-scroll delay-1" data-network="hungama"
+          data-cartoon="Shinchan">
           <div class="spotlight-content">
             <div class="section-tag" style="margin-bottom: var(--space-2xs);">Subversive Comedy Timing</div>
             <h3 class="spotlight-heading">Shinchan: Unfiltered Kasukabe Mayhem</h3>
@@ -461,86 +421,137 @@
               "Misae! Shiro wants his dinner, and Action Kamen is starting on TV right now!"
             </div>
             <p>
-              Yoshito Usui’s five-year-old protagonist dismantled adult pretense with surgical precision. Shinchan’s unfiltered observations, frantic grocery store chases with his mother Misae, and devotion to Action Kamen produced the sharpest comedic pacing on Indian television.
+              Yoshito Usui’s five-year-old protagonist dismantled adult pretense with surgical precision. Shinchan’s
+              unfiltered observations, frantic grocery store chases with his mother Misae, and devotion to Action Kamen
+              produced the sharpest comedic pacing on Indian television.
             </p>
             <p>
-              The Hindi dub elevated the series into folklore, infusing regional slang and unmatched voice acting delivery.
+              The Hindi dub elevated the series into folklore, infusing regional slang and unmatched voice acting
+              delivery.
             </p>
-            <div>
-              <button class="btn btn-secondary btn-sm btn-tune" data-cartoon="Shinchan" data-track-id="shinchan-1">
-                Tune Shinchan Kasukabe Theme
+            <div style="display: flex; gap: 8px; align-items: center; margin-top: var(--space-xs);">
+              <button class="btn btn-primary btn-sm btn-tune" data-cartoon="Shinchan" data-track-id="shinchan-1">
+                ▶ Tune Shinchan Channel
               </button>
             </div>
           </div>
           <div class="spotlight-media">
             <img src="Images/Shinchan.jpg" alt="Shinnosuke Nohara" width="600" height="375">
             <div class="spotlight-meta-badge">
-              <span class="channel-pill hungama">Hungama TV • Kasukabe Defense Force</span>
+              <span class="channel-pill hungama">Hungama TV • CH-04</span>
             </div>
           </div>
         </div>
 
-        <!-- Secondary Showcases: Asymmetric 3-Card Grid -->
+        <!-- Secondary Showcases: Asymmetric Cards Grid -->
         <div class="asymmetric-cards-grid reveal-on-scroll delay-2" style="margin-top: var(--space-xl);">
           <!-- Card 1: Pokémon Indigo League -->
-          <article class="showcase-card">
+          <article class="showcase-card" data-network="cn" data-cartoon="Pokemon">
             <div class="showcase-media">
               <img src="Images/Pokemon.jpg" alt="Ash Ketchum and Pikachu" width="380" height="214">
               <div class="showcase-channel-tag">
-                <span class="channel-pill cn">Cartoon Network</span>
+                <span class="channel-pill cn">Cartoon Network • CH-08</span>
               </div>
             </div>
             <div class="showcase-body">
               <h4 class="showcase-title">Pokémon: Indigo League</h4>
               <div class="showcase-tagline">"Gotta Catch 'Em All! 150 Pokémon in the Kanto Region."</div>
               <p class="showcase-desc">
-                From leaving Pallet Town on bicycle with an uncooperative Pikachu to the Indigo Plateau tournament, Ash’s journey redefined playground culture with Cheetos Tazo discs and sticker albums.
+                From leaving Pallet Town on bicycle with Pikachu to the Indigo Plateau tournament, Ash’s journey
+                redefined playground culture with Cheetos Tazo discs and sticker albums.
               </p>
               <div class="showcase-footer">
                 <span class="text-mono">1999–2004 CN Era</span>
-                <button class="btn-tune" data-cartoon="Pokemon" data-track-id="pokemon-1">Tune Theme</button>
+                <button class="btn-tune" data-cartoon="Pokemon" data-track-id="pokemon-1">▶ Tune Channel</button>
               </div>
             </div>
           </article>
 
           <!-- Card 2: Ninja Hattori -->
-          <article class="showcase-card">
+          <article class="showcase-card" data-network="hungama" data-cartoon="NinjaHathori">
             <div class="showcase-media">
               <img src="Images/NinjaHathori.jpg" alt="Ninja Hattori and Kenichi" width="380" height="214">
               <div class="showcase-channel-tag">
-                <span class="channel-pill hungama">Hungama TV</span>
+                <span class="channel-pill hungama">Hungama TV • CH-04</span>
               </div>
             </div>
             <div class="showcase-body">
               <h4 class="showcase-title">Ninja Hattori-kun</h4>
               <div class="showcase-tagline">"Pahadon ke upar, jungle ke paar... dekho kaun apne sheher aaya yaar!"</div>
               <p class="showcase-desc">
-                Kanzo Hattori from Iga Village moving in with Kenichi Mitsuba, navigating everyday modern school challenges with traditional ninjutsu and talking ninja dog Shishimaru.
+                Kanzo Hattori from Iga Village moving in with Kenichi Mitsuba, navigating everyday modern school
+                challenges with traditional ninjutsu and talking ninja dog Shishimaru.
               </p>
               <div class="showcase-footer">
                 <span class="text-mono">Iga Clan Ninjutsu</span>
-                <button class="btn-tune" data-cartoon="NinjaHathori" data-track-id="ninjahathori-1">Tune Theme</button>
+                <button class="btn-tune" data-cartoon="NinjaHathori" data-track-id="ninjahathori-1">▶ Tune
+                  Channel</button>
               </div>
             </div>
           </article>
 
           <!-- Card 3: Oggy and the Cockroaches -->
-          <article class="showcase-card">
+          <article class="showcase-card" data-network="cn" data-cartoon="Oggy">
             <div class="showcase-media">
               <img src="Images/Oggy.jpg" alt="Oggy and Jack" width="380" height="214">
               <div class="showcase-channel-tag">
-                <span class="channel-pill cn">Cartoon Network</span>
+                <span class="channel-pill cn">Cartoon Network • CH-08</span>
               </div>
             </div>
             <div class="showcase-body">
               <h4 class="showcase-title">Oggy & The Cockroaches</h4>
               <div class="showcase-tagline">"Kissa kursi ka, billi aur jhingur ka!"</div>
               <p class="showcase-desc">
-                A masterpiece of slapstick physical comedy transformed into Indian pop-culture immortality by custom Bollywood voice mimicries of Amitabh Bachchan, Sunny Deol, and Nana Patekar.
+                A masterpiece of slapstick physical comedy transformed into Indian pop-culture immortality by custom
+                Bollywood voice mimicries of Amitabh Bachchan, Sunny Deol, and Nana Patekar.
               </p>
               <div class="showcase-footer">
                 <span class="text-mono">Hindi Dub Phenomenon</span>
-                <button class="btn-tune" data-cartoon="Oggy" data-track-id="oggy-1">Tune Theme</button>
+                <button class="btn-tune" data-cartoon="Oggy" data-track-id="oggy-1">▶ Tune Channel</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4: Tom & Jerry -->
+          <article class="showcase-card" data-network="cn" data-cartoon="Tom&Jerry">
+            <div class="showcase-media">
+              <img src="Images/Tom&Jerry.jpg" alt="Tom & Jerry Classic Chase" width="380" height="214">
+              <div class="showcase-channel-tag">
+                <span class="channel-pill cn">Cartoon Network • CH-08</span>
+              </div>
+            </div>
+            <div class="showcase-body">
+              <h4 class="showcase-title">Tom & Jerry</h4>
+              <div class="showcase-tagline">"The timeless symphonic cat-and-mouse chase."</div>
+              <p class="showcase-desc">
+                William Hanna and Joseph Barbera's timeless orchestral chase sequences, accompanied by Scott Bradley's
+                lush jazz symphonies that bridged generations.
+              </p>
+              <div class="showcase-footer">
+                <span class="text-mono">Golden Slapstick</span>
+                <button class="btn-tune" data-cartoon="Tom&Jerry" data-track-id="tomjerry-1">▶ Tune Channel</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 5: Chhota Bheem -->
+          <article class="showcase-card" data-network="pogo" data-cartoon="Bheem">
+            <div class="showcase-media">
+              <img src="Images/Bheem.jpg" alt="Chhota Bheem in Dholakpur" width="380" height="214">
+              <div class="showcase-channel-tag">
+                <span class="channel-pill pogo">Pogo TV • CH-06</span>
+              </div>
+            </div>
+            <div class="showcase-body">
+              <h4 class="showcase-title">Chhota Bheem</h4>
+              <div class="showcase-tagline">"Dholakpur ka ladoo-powered superhero!"</div>
+              <p class="showcase-desc">
+                Green Gold Animation's homegrown blockbuster that defined the mid-2000s Pogo TV era, bringing indigenous
+                storytelling and Dholakpur adventures to every Indian household.
+              </p>
+              <div class="showcase-footer">
+                <span class="text-mono">Homegrown Icon</span>
+                <button class="btn-tune" data-cartoon="Bheem" data-track-id="bheem-1">▶ Tune Channel</button>
               </div>
             </div>
           </article>
@@ -549,84 +560,7 @@
     </section>
 
     <!-- ======================================================================
-         6. Curator's Workbench & Developer Connection Hub
-         ====================================================================== -->
-    <section class="section section-spacious workbench-section" id="curator" aria-label="Curator Workbench & Connection Hub">
-      <div class="container">
-        <div class="workbench-card reveal-on-scroll">
-          <div class="workbench-grid">
-            <!-- Left Column: Personal Narrative & Philosophy -->
-            <div>
-              <div class="developer-status-badge">
-                <span class="pulse-dot-available" aria-hidden="true"></span>
-                <span>OPEN FOR FRONTEND ROLES & COLLABORATIONS</span>
-              </div>
-
-              <h2 class="workbench-title">
-                Handcrafted with human soul by <span class="highlight-text">Aarush Tiwari</span>
-              </h2>
-
-              <p class="workbench-bio">
-                I built <strong>Cartoon Vaala</strong> because modern web experiences often lack soul, tactile warmth, and intention. As a 2000s kid who lived through the golden 4:00 PM television era, I wanted to turn those treasured memories into high-performance, handcrafted web engineering — zero bloated frameworks, verified 60fps audio architecture, and genuine emotional resonance.
-              </p>
-
-              <div class="workbench-quote-box">
-                <p class="workbench-quote-text">
-                  "Great software isn't just about code — it's about making people feel something real."
-                </p>
-              </div>
-
-              <!-- Conversation Starter Chips -->
-              <div class="conversation-starters">
-                <div class="conversation-starters-title">Topics We Can Talk About:</div>
-                <div class="starter-chips-wrap">
-                  <span class="starter-chip">⚡ Frontend Architecture & UI Craft</span>
-                  <span class="starter-chip">💡 Building Your Next Product</span>
-                  <span class="starter-chip">🎙️ Doraemon vs Shinchan Dub Debates</span>
-                  <span class="starter-chip">🏏 Colony Cricket Curfew Stories</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Right Column: Interactive Connection Action Cards -->
-            <div class="connection-cards-stack">
-              <!-- LinkedIn Card -->
-              <a href="https://www.linkedin.com/in/aarush-tiwari-a03587366?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" class="connect-action-card" aria-label="Connect with Aarush Tiwari on LinkedIn">
-                <div class="connect-card-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                  </svg>
-                </div>
-                <div class="connect-card-info">
-                  <div class="connect-card-platform">Professional Network</div>
-                  <div class="connect-card-title">Connect on LinkedIn</div>
-                  <div class="connect-card-subtitle">Let's discuss opportunities, frontend roles & collaborations</div>
-                </div>
-                <span class="connect-card-arrow" aria-hidden="true">→</span>
-              </a>
-
-              <!-- GitHub Card -->
-              <a href="https://github.com/aarushtiwari297" target="_blank" rel="noopener noreferrer" class="connect-action-card" aria-label="View Aarush Tiwari GitHub Repositories">
-                <div class="connect-card-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-                  </svg>
-                </div>
-                <div class="connect-card-info">
-                  <div class="connect-card-platform">Open Source Code</div>
-                  <div class="connect-card-title">Explore on GitHub</div>
-                  <div class="connect-card-subtitle">Check out repositories, frontend code & project commits</div>
-                </div>
-                <span class="connect-card-arrow" aria-hidden="true">→</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ======================================================================
-         7. Archival Closing Reflection & Broadcast Sign-Off
+         5. Archival Closing Reflection & Broadcast Sign-Off
          ====================================================================== -->
     <section class="section section-spacious" id="closing" aria-label="Closing Reflection & Sign-Off">
       <div class="container" style="text-align: center;">
@@ -634,17 +568,19 @@
         <h2 style="font-size: var(--fs-h2); max-width: 760px; margin: 0 auto var(--space-sm);">
           The cathode tube never truly cooled down.
         </h2>
-        <p class="lead" style="max-width: 660px; margin: 0 auto var(--space-md); color: var(--color-text-subtle);">
-          Mummy has called for dinner twice. The math homework copy is still blank on the dining table. Decades pass, but that specific joy of sitting cross-legged at 4:00 PM remains an eternal home inside all of us.
+        <p class="lead" style="max-width: 640px; margin: 0 auto var(--space-md); color: var(--color-text-subtle);">
+          Mummy has called for dinner twice. The math homework copy is still blank on the dining table. Decades pass,
+          but that specific joy of sitting cross-legged at 4:00 PM remains an eternal home inside all of us.
         </p>
-        <div class="text-handwritten" style="font-size: 1.5rem; margin-bottom: var(--space-lg); color: var(--color-action-primary);">
+        <div class="text-handwritten"
+          style="font-size: 1.6rem; margin-bottom: var(--space-lg); color: var(--color-action-primary);">
           "Same time tomorrow at 4:00 PM?"
         </div>
         <div style="display: flex; gap: var(--space-sm); justify-content: center; flex-wrap: wrap;">
           <button class="btn btn-primary bgm-toggle" aria-pressed="false">
             <span>Play Broadcast Audio</span>
           </button>
-          <a href="#hero" class="btn btn-secondary">
+          <a href="#watch" class="btn btn-secondary">
             <span>Return to TV Tuner</span>
           </a>
         </div>
@@ -653,31 +589,34 @@
   </main>
 
   <!-- ========================================================================
-       8. Site Footer & Archival Colophon
+       6. Premium & Professional Footer with Curator Colophon
        ======================================================================== -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
+        <!-- Archive Mission Brand -->
         <div class="footer-brand">
-          <img src="Assests/Logo.png" alt="Cartoon Vaala Colophon" width="160" height="46" style="margin-bottom: var(--space-xs);">
+          <img src="Assests/Logo.png" alt="Cartoon Vaala Archive" width="160" height="42"
+            style="margin-bottom: var(--space-xs);">
           <p>
-            A handcrafted digital archive dedicated to documenting the golden broadcast era of Indian children's television, CRT soundscapes, and neighborhood nostalgia.
+            A handcrafted digital archive dedicated to documenting the golden broadcast era of Indian children's
+            television, CRT soundscapes, and neighborhood nostalgia.
           </p>
         </div>
 
+        <!-- Quick Navigation -->
         <div>
-          <div class="footer-col-title">Archive Sections</div>
+          <div class="footer-col-title">Archive Navigation</div>
           <ul class="footer-list">
-            <li><a href="#hero">CRT Television Deck</a></li>
-            <li><a href="#about">The 4:00 PM Feeling</a></li>
-            <li><a href="#schedule">Broadcast Wave</a></li>
-            <li><a href="#spotlight">Show Retrospectives</a></li>
-            <li><a href="#curator">Curator's Workbench</a></li>
+            <li><a href="#watch">WATCH (TV Monitor)</a></li>
+            <li><a href="remember.html">REMEMBER (Nostalgic Library)</a></li>
+            <li><a href="#cartoons">CARTOONS (Master Archive)</a></li>
           </ul>
         </div>
 
+        <!-- Networks -->
         <div>
-          <div class="footer-col-title">Broadcast Networks</div>
+          <div class="footer-col-title">Broadcast Heritage</div>
           <ul class="footer-list">
             <li><span class="text-subtle">Hungama TV (India)</span></li>
             <li><span class="text-subtle">Cartoon Network (South Asia)</span></li>
@@ -687,51 +626,67 @@
           </ul>
         </div>
 
-        <!-- Developer & Curator Profile Block -->
-        <div>
-          <div class="footer-col-title">Developer & Curator</div>
-          <p style="font-size: var(--fs-xs); color: var(--color-text-subtle); margin-bottom: var(--space-xs); line-height: 1.5;">
-            Handcrafted with nostalgic precision by <strong>Aarush Tiwari</strong>.
-          </p>
-          <div class="social-links-stack">
-            <a href="https://github.com/aarushtiwari297" target="_blank" rel="noopener noreferrer" class="social-btn github" aria-label="Aarush Tiwari GitHub Profile">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-              </svg>
-              <span>GitHub</span>
-            </a>
-            <a href="https://www.linkedin.com/in/aarush-tiwari-a03587366?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" class="social-btn linkedin" aria-label="Aarush Tiwari LinkedIn Profile">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-              </svg>
-              <span>LinkedIn</span>
-            </a>
+        <!-- Professional Curator Colophon Card -->
+        <div class="footer-curator-col">
+          <div class="footer-col-title">Project Curator</div>
+          <div class="footer-curator-card">
+            <div class="footer-curator-header">
+              <span class="curator-name">Aarush Tiwari</span>
+              <span class="curator-role">Curator & Engineer</span>
+            </div>
+            <p class="footer-curator-bio">
+              Archival tribute to the 1998–2008 golden era of after-school television. Built with pure HTML5, vanilla
+              CSS, and custom Web Audio relays.
+            </p>
+            <div class="footer-curator-links">
+              <a href="https://github.com/aarushtiwari297" target="_blank" rel="noopener noreferrer"
+                class="curator-badge-link" aria-label="Aarush Tiwari on GitHub">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path
+                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                </svg>
+                <span>GitHub</span>
+              </a>
+              <a href="https://www.linkedin.com/in/aarush-tiwari-a03587366?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+                target="_blank" rel="noopener noreferrer" class="curator-badge-link"
+                aria-label="Aarush Tiwari on LinkedIn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path
+                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                </svg>
+                <span>LinkedIn</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
       <div class="footer-bottom">
         <div>
-          © Cartoon Vaala Archive • Handcrafted with human soul by Aarush Tiwari.
+          © Cartoon Vaala Archive • Curated & Engineered by Aarush Tiwari.
         </div>
         <div class="text-subtle">
-          All animated character rights belong to their respective creators, animators, and network distributors.
+          All character rights and trademarks belong to their respective creators and network distributors.
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- Persistent Floating TV Broadcast Pill (Visible when scrolled away from Hero TV) -->
-  <aside class="persistent-broadcast-pill" id="broadcast-pill" aria-label="Live Television Broadcast Indicator">
+  <!-- Persistent Floating Bottom-Center Broadcast Mini-Player -->
+  <aside class="persistent-broadcast-pill" id="broadcast-pill" aria-label="Live Broadcast Radio Mini Player">
     <div class="broadcast-pill-live">
       <span class="live-dot live-on-air-pulse" aria-hidden="true"></span>
       <span id="pill-status-text">ON AIR</span>
     </div>
     <div class="broadcast-pill-info">
       <div class="broadcast-pill-title" id="pill-track-title">Doraemon Title Track</div>
-      <div class="broadcast-pill-meta" id="pill-channel-tag">CH-04 HUNGAMA</div>
+      <div class="broadcast-pill-meta" id="pill-channel-tag">CH-04 • HUNGAMA TV</div>
     </div>
-    <a href="#nostalgic-player" class="broadcast-pill-btn" aria-label="Jump to Television Monitor Deck">
+    <button class="player-btn-secondary" id="pill-play-pause-btn" aria-label="Toggle Playback"
+      style="width:30px; height:30px; font-size:0.75rem; border-radius:50%;">
+      ▶
+    </button>
+    <a href="#watch" class="broadcast-pill-btn" aria-label="Jump to TV Console">
       Tune Monitor
     </a>
   </aside>
@@ -741,4 +696,5 @@
   <script src="js/player.js"></script>
   <script src="js/main.js"></script>
 </body>
+
 </html>

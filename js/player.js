@@ -1,13 +1,14 @@
 /* ==========================================================================
    Cartoon Vaala — HTML5 Audio Engine & Master CRT Television Sync
-   Tactile Channel Tuning, 350ms Analog Static Transitions, EPG Wave Sync
-   Indian 2000s Cable TV Receiver Simulation & Color Bars Easter Egg
+   Single Source of Truth for Global Current-Broadcast State
+   Tactile Channel Tuning, 350ms Analog Static Transitions, EPG Wave Sync,
+   Cartoon Archive Network Filtering & Persistent Mini-Player Integration
    ========================================================================== */
 
 (function () {
   'use strict';
 
-  // Master State Registry
+  // Master State Registry (Single Source of Truth)
   const state = {
     playlist: typeof cartoonTracks !== 'undefined' ? [...cartoonTracks] : [],
     currentIndex: 0,
@@ -18,6 +19,7 @@
     isSeeking: false,
     isTuning: false,
     isTestPattern: false,
+    activeNetworkFilter: 'all',
     tuningTimeout: null,
     history: []
   };
@@ -56,7 +58,16 @@
     broadcastPill: document.getElementById('broadcast-pill'),
     pillTrackTitle: document.getElementById('pill-track-title'),
     pillChannelTag: document.getElementById('pill-channel-tag'),
-    pillStatusText: document.getElementById('pill-status-text')
+    pillStatusText: document.getElementById('pill-status-text'),
+    pillPlayPauseBtn: document.getElementById('pill-play-pause-btn'),
+    ambientSoundbar: document.getElementById('ambient-soundbar'),
+    ambientStatusText: document.getElementById('ambient-status-text'),
+    ambientTrackTitle: document.getElementById('ambient-track-title'),
+    ambientAudioToggle: document.getElementById('ambient-audio-toggle'),
+    ambientToggleIcon: document.getElementById('ambient-toggle-icon'),
+    ambientToggleLabel: document.getElementById('ambient-toggle-label'),
+    ambientAudioNext: document.getElementById('ambient-audio-next'),
+    ambientEqWrap: document.querySelector('.ambient-eq-wrap')
   };
 
   // ==========================================================================
@@ -96,13 +107,13 @@
   }
 
   // ==========================================================================
-  // 2. Update Visual Player Console & Persistent State
+  // 2. Synchronize Global Broadcast State across ALL Views & Components
   // ==========================================================================
   function updatePlayerUI() {
     const track = state.playlist[state.currentIndex];
     if (!track) return;
 
-    // 1. Update Text Metadata
+    // 1. Update Text Metadata in TV Deck
     if (dom.cartoonName) dom.cartoonName.textContent = track.displayName || track.cartoon;
     if (dom.trackTitle) dom.trackTitle.textContent = track.title;
     if (dom.channelBadge) dom.channelBadge.textContent = track.channel || 'TV Broadcast';
@@ -120,7 +131,7 @@
       }
     }
 
-    // 3. Sync Play/Pause Transport Button State
+    // 3. Sync Main TV Transport Play/Pause Button State
     if (dom.playPauseBtn) {
       dom.playPauseBtn.setAttribute('aria-label', isPlaying ? 'Pause Broadcast' : 'Play Broadcast');
       dom.playPauseBtn.innerHTML = isPlaying
@@ -143,7 +154,7 @@
       }
     });
 
-    // 5. Sync Active Transmission Dial Slot
+    // 5. Sync TV GUIDE Active Transmission Dial Slot
     const dialNodes = document.querySelectorAll('.dial-slot-node');
     dialNodes.forEach((node) => {
       const cartoonTarget = node.getAttribute('data-cartoon');
@@ -157,10 +168,53 @@
       }
     });
 
-    // 6. Sync Persistent Broadcast Pill
+    // 6. Sync CARTOONS Archive Active Cards & Spotlights
+    const cartoonCards = document.querySelectorAll('.showcase-card, .editorial-spotlight');
+    cartoonCards.forEach((card) => {
+      const cartoonTarget = card.getAttribute('data-cartoon');
+      if (cartoonTarget && cartoonTarget.toLowerCase() === track.cartoon.toLowerCase()) {
+        card.classList.add('active-broadcast');
+      } else {
+        card.classList.remove('active-broadcast');
+      }
+    });
+
+    // 7. Sync Persistent Mini Player
     if (dom.pillTrackTitle) dom.pillTrackTitle.textContent = track.title;
     if (dom.pillChannelTag) dom.pillChannelTag.textContent = `${track.channelCode || 'CH-04'} • ${track.channel || 'TV'}`;
     if (dom.pillStatusText) dom.pillStatusText.textContent = isPlaying ? 'ON AIR' : 'PAUSED';
+    if (dom.pillPlayPauseBtn) {
+      dom.pillPlayPauseBtn.textContent = isPlaying ? '⏸' : '▶';
+      dom.pillPlayPauseBtn.setAttribute('aria-label', isPlaying ? 'Pause Broadcast' : 'Play Broadcast');
+    }
+
+    // 8. Sync Ambient Nostalgic Soundscape Bar (remember.html)
+    if (dom.ambientStatusText) {
+      dom.ambientStatusText.textContent = isPlaying ? 'SOOTHING NOSTALGIC AUDIO • ON AIR' : 'SOOTHING NOSTALGIC AUDIO • PAUSED';
+    }
+    if (dom.ambientTrackTitle) {
+      dom.ambientTrackTitle.textContent = `${track.title} • ${track.channel || '1998–2008 Soundtrack'}`;
+    }
+    if (dom.ambientAudioToggle) {
+      if (isPlaying) {
+        dom.ambientAudioToggle.classList.add('playing');
+        dom.ambientAudioToggle.setAttribute('aria-pressed', 'true');
+        if (dom.ambientToggleIcon) dom.ambientToggleIcon.textContent = '⏸';
+        if (dom.ambientToggleLabel) dom.ambientToggleLabel.textContent = 'Pause Music';
+      } else {
+        dom.ambientAudioToggle.classList.remove('playing');
+        dom.ambientAudioToggle.setAttribute('aria-pressed', 'false');
+        if (dom.ambientToggleIcon) dom.ambientToggleIcon.textContent = '▶';
+        if (dom.ambientToggleLabel) dom.ambientToggleLabel.textContent = 'Play Soothing Music';
+      }
+    }
+    if (dom.ambientEqWrap) {
+      if (isPlaying) {
+        dom.ambientEqWrap.classList.add('active');
+      } else {
+        dom.ambientEqWrap.classList.remove('active');
+      }
+    }
   }
 
   // ==========================================================================
@@ -186,7 +240,7 @@
     // Trigger Physical Relay Click
     playRelayClick();
 
-    // 1. Enter CRT Tuning State: Static Layer & Amber Receiver Pulse
+    // 1. Enter CRT Tuning State: Static Noise & Receiver Frequency Scan Pulse
     if (dom.imageFrame) {
       dom.imageFrame.classList.add('tuning');
     }
@@ -286,7 +340,37 @@
   }
 
   // ==========================================================================
-  // 5. Easter Egg: Cable TV SMPTE Color Bars Screen
+  // 5. Cartoon Archive Network Filter Engine
+  // ==========================================================================
+  function filterNetwork(networkKey) {
+    state.activeNetworkFilter = networkKey;
+
+    // 1. Update filter tab button active states
+    const tabs = document.querySelectorAll('.filter-tab');
+    tabs.forEach((tab) => {
+      if (tab.getAttribute('data-filter') === networkKey) {
+        tab.classList.add('active');
+        tab.setAttribute('aria-pressed', 'true');
+      } else {
+        tab.classList.remove('active');
+        tab.setAttribute('aria-pressed', 'false');
+      }
+    });
+
+    // 2. Filter cartoon archive cards & spotlights
+    const cards = document.querySelectorAll('.editorial-spotlight, .showcase-card');
+    cards.forEach((card) => {
+      const cardNetwork = card.getAttribute('data-network');
+      if (networkKey === 'all' || cardNetwork === networkKey) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  // ==========================================================================
+  // 6. Easter Egg: Cable TV SMPTE Color Bars Screen
   // ==========================================================================
   function toggleTestPattern(forcedState) {
     const shouldBeActive = typeof forcedState === 'boolean' ? forcedState : !state.isTestPattern;
@@ -313,7 +397,7 @@
   }
 
   // ==========================================================================
-  // 6. Timeline Scrubber Logic
+  // 7. Timeline Scrubber Logic
   // ==========================================================================
   function updateProgress() {
     if (state.isSeeking || isNaN(audio.duration) || audio.duration === 0) return;
@@ -329,7 +413,7 @@
   }
 
   // ==========================================================================
-  // 7. Audio Element Event Listeners
+  // 8. Audio Element Event Listeners
   // ==========================================================================
   audio.addEventListener('timeupdate', updateProgress);
   audio.addEventListener('play', updatePlayerUI);
@@ -341,10 +425,11 @@
   });
 
   // ==========================================================================
-  // 8. Physical Hardware Control Bindings & Keyboard Shortcuts
+  // 9. Physical Hardware Control Bindings & Keyboard Shortcuts
   // ==========================================================================
   function initEvents() {
     if (dom.playPauseBtn) dom.playPauseBtn.addEventListener('click', togglePlayPause);
+    if (dom.pillPlayPauseBtn) dom.pillPlayPauseBtn.addEventListener('click', togglePlayPause);
     if (dom.nextBtn) dom.nextBtn.addEventListener('click', playNextTrack);
     if (dom.prevBtn) dom.prevBtn.addEventListener('click', playPrevTrack);
 
@@ -453,10 +538,34 @@
         }
       }
     });
+
+    // Network filter tab click delegation
+    document.addEventListener('click', (e) => {
+      const filterTab = e.target.closest('.filter-tab');
+      if (filterTab) {
+        const filterTarget = filterTab.getAttribute('data-filter');
+        if (filterTarget) {
+          filterNetwork(filterTarget);
+        }
+      }
+    });
+
+    // Ambient Soundscape Toggle & Next Track on remember.html
+    if (dom.ambientAudioToggle) {
+      dom.ambientAudioToggle.addEventListener('click', () => {
+        togglePlayPause();
+      });
+    }
+
+    if (dom.ambientAudioNext) {
+      dom.ambientAudioNext.addEventListener('click', () => {
+        playNextTrack();
+      });
+    }
   }
 
   // ==========================================================================
-  // 9. Public API
+  // 10. Public API
   // ==========================================================================
   window.CartoonPlayer = {
     play: () => {
@@ -469,15 +578,12 @@
     next: playNextTrack,
     prev: playPrevTrack,
     tuneChannel: tuneChannel,
+    filterNetwork: filterNetwork,
     toggleTestPattern: toggleTestPattern,
     playTrackById: (trackId) => {
       const idx = state.playlist.findIndex((t) => t.id === trackId);
       if (idx !== -1) {
         tuneChannel(idx, true);
-        const playerSec = document.getElementById('nostalgic-player');
-        if (playerSec) {
-          playerSec.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
       }
     },
     playTrackByCartoon: (cartoonKey) => {
@@ -486,15 +592,12 @@
       );
       if (idx !== -1) {
         tuneChannel(idx, true);
-        const playerSec = document.getElementById('nostalgic-player');
-        if (playerSec) {
-          playerSec.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
       }
     }
   };
 
-  // Initial Load (Cathode Ray Startup)
+  // Initial Load (Cathode Ray Standby)
   initEvents();
   tuneChannel(0, false);
 })();
+

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nostalgic Library — A 1998–2008 Indian Childhood Time Capsule | Cartoon Vaala</title>
+  <meta name="description" content="A curated digital time capsule and nostalgic library of 13 authentic photographic childhood memories from the 1990s and 2000s Indian experience.">
+  
+  <!-- Google Fonts: Outfit (Display), Plus Jakarta Sans (Body) & Caveat (Handwritten) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheet Hierarchy -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Optional CRT Scanline Overlay Filter -->
+  <div class="crt-overlay" aria-hidden="true"></div>
+
+  <!-- ========================================================================
+       1. Site Header & Primary Navigation
+       ======================================================================== -->
+  <header class="site-header" id="header">
+    <div class="container header-container">
+      <div class="brand-link">
+        <a href="index.html#watch" aria-label="Cartoon Vaala Home">
+          <img src="Assests/Logo.png" alt="Cartoon Vaala Archive" class="brand-logo" width="160" height="42">
+        </a>
+        <div class="brand-station-tag">
+          <span class="status-dot-on-air" aria-hidden="true"></span>
+          <span>ON AIR • 1998–2008 ARCHIVE</span>
+        </div>
+      </div>
+
+      <!-- Primary Destinations: WATCH, REMEMBER, CARTOONS -->
+      <nav class="site-nav" id="main-nav" aria-label="Primary Navigation">
+        <ul class="nav-list">
+          <li><a href="index.html#watch" class="nav-link">WATCH</a></li>
+          <li><a href="remember.html" class="nav-link active">REMEMBER</a></li>
+          <li><a href="index.html#cartoons" class="nav-link">CARTOONS</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Live BGM Sound Controller -->
+        <button class="bgm-toggle" id="bgm-btn" aria-pressed="false" title="Toggle Cartoon Music Broadcast">
+          <div class="equalizer-bars" aria-hidden="true">
+            <span class="eq-bar"></span>
+            <span class="eq-bar"></span>
+            <span class="eq-bar"></span>
+          </div>
+          <span class="bgm-label">Play Songs</span>
+        </button>
+
+        <!-- Mobile Hamburger Menu Button -->
+        <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding-top: calc(76px + var(--space-xl)); padding-bottom: var(--space-3xl);">
+    <!-- ======================================================================
+         NOSTALGIC LIBRARY — 1:1 Square Archival Time Capsule (1998–2008)
+         ====================================================================== -->
+    <section class="section" id="library" aria-label="Nostalgic Library Time Capsule">
+      <div class="container">
+        
+        <!-- Header & Breadcrumb Nav -->
+        <div class="text-center library-header-wrap reveal-on-scroll">
+          <div style="margin-bottom: var(--space-md);">
+            <a href="index.html#watch" class="btn btn-secondary btn-sm" style="display: inline-flex; align-items: center; gap: 6px;">
+              <span>←</span>
+              <span>Back to TV Broadcast</span>
+            </a>
+          </div>
+          <div class="section-tag">Childhood Time Capsule • 1998–2008</div>
+          <h1 class="section-title" style="font-size: clamp(2.2rem, 5vw, 3.4rem); margin-top: var(--space-2xs);">Nostalgic Library</h1>
+          <p class="section-desc" style="max-width: 660px; margin: 0 auto;">
+            A carefully preserved 1:1 archival scrapbook of the tactile sights, sounds, snacks, and rituals of growing up in 1990s & 2000s India.
+          </p>
+        </div>
+
+        <!-- Ambient Nostalgic Soundscape Control Bar (Dedicated Doraemon Melody) -->
+        <div class="library-ambient-soundbar reveal-on-scroll" id="ambient-soundbar" role="region" aria-label="Ambient Nostalgic Soundscape">
+          <div class="ambient-soundbar-left">
+            <div class="ambient-eq-wrap" aria-hidden="true">
+              <span class="ambient-eq-bar"></span>
+              <span class="ambient-eq-bar"></span>
+              <span class="ambient-eq-bar"></span>
+              <span class="ambient-eq-bar"></span>
+            </div>
+            <div class="ambient-soundbar-text">
+              <span class="ambient-soundbar-status" id="ambient-status-text">SOOTHING DORAEMON MELODY • PLAYING</span>
+              <span class="ambient-soundbar-track" id="ambient-track-title">Doraemon Nostalgic Theme • Doremon 3 (Hungama TV)</span>
+            </div>
+          </div>
+          <div class="ambient-soundbar-actions">
+            <button class="ambient-audio-toggle-btn" id="ambient-audio-toggle" aria-pressed="false" aria-label="Toggle Doraemon nostalgic background music">
+              <span class="ambient-btn-icon" id="ambient-toggle-icon">▶</span>
+              <span class="ambient-btn-label" id="ambient-toggle-label">Play Doraemon Song</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Category Filter Bar & Random Discovery Action -->
+        <div class="library-discovery-controls reveal-on-scroll">
+          <div class="library-filter-bar" role="tablist" aria-label="Filter Memories by Category">
+            <button class="library-filter-tab active" data-category="all" role="tab" aria-selected="true">
+              <span>✨ All Memories (13)</span>
+            </button>
+            <button class="library-filter-tab" data-category="school" role="tab" aria-selected="false">
+              <span>📐 School Days (3)</span>
+            </button>
+            <button class="library-filter-tab" data-category="tv" role="tab" aria-selected="false">
+              <span>📺 TV & Cartoons (1)</span>
+            </button>
+            <button class="library-filter-tab" data-category="games" role="tab" aria-selected="false">
+              <span>🕹️ Games & Toys (4)</span>
+            </button>
+            <button class="library-filter-tab" data-category="tech" role="tab" aria-selected="false">
+              <span>📼 Everyday Tech (2)</span>
+            </button>
+            <button class="library-filter-tab" data-category="treats" role="tab" aria-selected="false">
+              <span>🥤 Summer Treats (3)</span>
+            </button>
+          </div>
+
+          <!-- Random Discovery Trigger -->
+          <button class="btn-random-discovery" id="btn-random-memory" aria-label="Open a random memory card">
+            <span>🎲</span>
+            <span>Show me another memory</span>
+          </button>
+        </div>
+
+        <!-- 1:1 Square Memory Grid (Rendered dynamically via library.js) -->
+        <div class="library-grid" id="library-grid" role="region" aria-label="Memories Grid" aria-live="polite">
+          <!-- Dynamic 1:1 photographic cards injected by library.js -->
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       Accessible Memory Detail Modal (Scrapbook Time Capsule Viewer)
+       ======================================================================== -->
+  <div class="memory-modal" id="memory-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-title">
+    <div class="memory-modal-backdrop" id="modal-backdrop"></div>
+    <div class="memory-modal-dialog">
+      <button class="memory-modal-close-btn" id="modal-close-btn" aria-label="Close memory modal">&times;</button>
+      <div class="memory-modal-layout">
+        <div class="memory-modal-visual-col" id="modal-visual">
+          <!-- 1:1 Visual / Photo Rendered Dynamically -->
+        </div>
+        <div class="memory-modal-info-col">
+          <div class="memory-modal-tags-row">
+            <span class="section-tag" id="modal-category">SCHOOL DAYS</span>
+            <span class="text-mono" id="modal-era" style="font-size: var(--fs-micro); color: var(--color-text-accent);">Circa 1999–2006</span>
+          </div>
+          <h3 class="memory-modal-title" id="modal-title">Memory Title</h3>
+          <div class="memory-modal-quote" id="modal-quote">Memory Quote</div>
+          <p class="memory-modal-lore" id="modal-lore">Detailed nostalgic chronicle and context.</p>
+          
+          <div class="memory-modal-nav-row">
+            <div class="memory-modal-nav-group">
+              <button class="sound-btn" id="modal-prev-btn" aria-label="Previous memory">
+                ← Prev
+              </button>
+              <button class="sound-btn" id="modal-next-btn" aria-label="Next memory">
+                Next →
+              </button>
+            </div>
+            <button class="btn-random-discovery" id="modal-random-btn" style="padding: 0.35rem 0.9rem; font-size: var(--fs-micro);">
+              <span>🎲 Random</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       Footer with Curator Colophon
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Archive Mission Brand -->
+        <div class="footer-brand">
+          <img src="Assests/Logo.png" alt="Cartoon Vaala Archive" width="160" height="42" style="margin-bottom: var(--space-xs);">
+          <p>
+            A handcrafted digital archive dedicated to documenting the golden broadcast era of Indian children's television, CRT soundscapes, and neighborhood nostalgia.
+          </p>
+        </div>
+
+        <!-- Quick Navigation -->
+        <div>
+          <div class="footer-col-title">Archive Navigation</div>
+          <ul class="footer-list">
+            <li><a href="index.html#watch">WATCH (TV Monitor)</a></li>
+            <li><a href="remember.html">REMEMBER (Nostalgic Library)</a></li>
+            <li><a href="index.html#cartoons">CARTOONS (Master Archive)</a></li>
+          </ul>
+        </div>
+
+        <!-- Networks -->
+        <div>
+          <div class="footer-col-title">Broadcast Heritage</div>
+          <ul class="footer-list">
+            <li><span class="text-subtle">Hungama TV (India)</span></li>
+            <li><span class="text-subtle">Cartoon Network (South Asia)</span></li>
+            <li><span class="text-subtle">Pogo TV (Turner)</span></li>
+            <li><span class="text-subtle">Jetix / Fox Kids</span></li>
+            <li><span class="text-subtle">Animax India</span></li>
+          </ul>
+        </div>
+
+        <!-- Professional Curator Colophon Card -->
+        <div class="footer-curator-col">
+          <div class="footer-col-title">Project Curator</div>
+          <div class="footer-curator-card">
+            <div class="footer-curator-header">
+              <span class="curator-name">Aarush Tiwari</span>
+              <span class="curator-role">Curator & Engineer</span>
+            </div>
+            <p class="footer-curator-bio">
+              Archival tribute to the 1998–2008 golden era of after-school television. Built with pure HTML5, vanilla CSS, and custom Web Audio relays.
+            </p>
+            <div class="footer-curator-links">
+              <a href="https://github.com/aarushtiwari297" target="_blank" rel="noopener noreferrer" class="curator-badge-link" aria-label="Aarush Tiwari on GitHub">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                </svg>
+                <span>GitHub</span>
+              </a>
+              <a href="https://www.linkedin.com/in/aarush-tiwari-a03587366?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" class="curator-badge-link" aria-label="Aarush Tiwari on LinkedIn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+                <span>LinkedIn</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © Cartoon Vaala Archive • Curated & Engineered by Aarush Tiwari.
+        </div>
+        <div class="text-subtle">
+          All character rights and trademarks belong to their respective creators and network distributors.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Persistent Floating Bottom-Center Broadcast Mini-Player -->
+  <aside class="persistent-broadcast-pill visible" id="broadcast-pill" aria-label="Live Broadcast Radio Mini Player">
+    <div class="broadcast-pill-live">
+      <span class="live-dot live-on-air-pulse" aria-hidden="true"></span>
+      <span id="pill-status-text">ON AIR</span>
+    </div>
+    <div class="broadcast-pill-info">
+      <div class="broadcast-pill-title" id="pill-track-title">Doraemon Nostalgic Theme</div>
+      <div class="broadcast-pill-meta" id="pill-channel-tag">DOREMON 3 • HUNGAMA TV</div>
+    </div>
+    <button class="player-btn-secondary" id="pill-play-pause-btn" aria-label="Toggle Playback" style="width:30px; height:30px; font-size:0.75rem; border-radius:50%;">
+      ▶
+    </button>
+    <a href="index.html#watch" class="broadcast-pill-btn" aria-label="Jump to TV Console">
+      Tune Monitor
+    </a>
+  </aside>
+
+  <!-- Master JavaScript Architecture -->
+  <script src="js/library-data.js"></script>
+  <script src="js/library.js"></script>
+  <script src="js/remember-audio.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

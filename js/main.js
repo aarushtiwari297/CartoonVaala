@@ -1,7 +1,7 @@
 /* ==========================================================================
    Cartoon Vaala — Main Interactive Orchestrator
    Navigation, Mobile Menu Drawer, Header Scroll States, BGM Sync,
-   Crisp Scroll Reveals & Persistent Broadcast State Monitor
+   Interactive Memory Stepper with Keyboard Support & Scroll Reveals
    ========================================================================== */
 
 (function () {
@@ -17,7 +17,7 @@
 
   window.addEventListener('scroll', () => {
     if (!header) return;
-    if (window.scrollY > 30) {
+    if (window.scrollY > 24) {
       header.classList.add('scrolled');
     } else {
       header.classList.remove('scrolled');
@@ -53,7 +53,7 @@
     }, { passive: true });
   }
 
-  // Header BGM Toggle Buttons
+  // Header & Closing Section BGM Toggle Buttons
   const bgmButtons = document.querySelectorAll('.bgm-toggle');
   bgmButtons.forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -64,7 +64,35 @@
   });
 
   // ==========================================================================
-  // 2. Persistent Floating Broadcast Status Observer
+  // 2. Interactive Memory Stepper (Index Page)
+  // ==========================================================================
+  const memoryStepper = document.getElementById('memory-stepper');
+  if (memoryStepper) {
+    function activateNode(node) {
+      const allNodes = memoryStepper.querySelectorAll('.memory-step-node');
+      allNodes.forEach((n) => n.classList.remove('active'));
+      node.classList.add('active');
+    }
+
+    memoryStepper.addEventListener('click', (e) => {
+      if (e.target.closest('button, a')) return;
+      const node = e.target.closest('.memory-step-node');
+      if (node) activateNode(node);
+    });
+
+    memoryStepper.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        const node = e.target.closest('.memory-step-node');
+        if (node && !e.target.closest('button, a')) {
+          e.preventDefault();
+          activateNode(node);
+        }
+      }
+    });
+  }
+
+  // ==========================================================================
+  // 3. Persistent Floating Bottom-Center Broadcast Mini Player Observer
   // ==========================================================================
   const broadcastPill = document.getElementById('broadcast-pill');
   const heroPlayer = document.getElementById('nostalgic-player');
@@ -74,7 +102,7 @@
       (entries) => {
         entries.forEach((entry) => {
           // If the hero TV deck is visible in viewport, hide floating pill;
-          // When user scrolls past it, show floating pill.
+          // When user scrolls away, show floating pill.
           if (entry.isIntersecting) {
             broadcastPill.classList.remove('visible');
           } else {
@@ -82,14 +110,14 @@
           }
         });
       },
-      { threshold: 0.15 }
+      { threshold: 0.12 }
     );
 
     playerObserver.observe(heroPlayer);
   }
 
   // ==========================================================================
-  // 3. Crisp Landmark Scroll Reveals
+  // 4. Crisp Landmark Scroll Reveals
   // ==========================================================================
   const revealElements = document.querySelectorAll('.reveal-on-scroll');
 

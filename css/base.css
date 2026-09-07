@@ -20,10 +20,10 @@ html {
 body {
   font-family: var(--font-body);
   font-size: var(--fs-body);
-  line-height: 1.65;
+  line-height: 1.7;
   color: var(--color-text-body);
   background-color: var(--color-surface-canvas);
-  background-image: linear-gradient(180deg, #100c09 0%, #0d0a08 100%);
+  background-image: linear-gradient(180deg, #0e0b09 0%, #080605 100%);
   background-attachment: fixed;
   overflow-x: hidden;
   max-width: 100vw;
@@ -32,7 +32,7 @@ body {
   padding: 0;
 }
 
-/* Subtle Film Grain Texture Overlay */
+/* Subtle Film Texture Overlay */
 body::after {
   content: "";
   position: fixed;
@@ -41,10 +41,10 @@ body::after {
   width: 100vw;
   height: 100vh;
   background-image: radial-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 0);
-  background-size: 20px 20px;
+  background-size: 24px 24px;
   pointer-events: none;
   z-index: var(--z-overlay);
-  opacity: 0.75;
+  opacity: 0.6;
 }
 
 /* ==========================================================================
@@ -54,8 +54,8 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
   color: var(--color-text-heading);
   font-weight: 700;
-  line-height: 1.12;
-  letter-spacing: -0.025em;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
   margin-top: 0;
   margin-bottom: var(--space-xs);
 }
@@ -64,13 +64,13 @@ h1 {
   font-size: var(--fs-hero);
   font-weight: 800;
   letter-spacing: -0.035em;
-  line-height: 1.04;
+  line-height: 1.06;
 }
 
 h2 {
   font-size: var(--fs-h2);
   font-weight: 700;
-  line-height: 1.15;
+  line-height: 1.2;
 }
 
 h3 {
@@ -97,29 +97,15 @@ p:last-child {
 
 p.lead {
   font-size: var(--fs-body-lg);
-  line-height: 1.6;
+  line-height: 1.65;
   color: var(--color-text-heading);
-}
-
-/* Tiny Metadata Eyebrow paired with Oversized Headlines */
-.meta-supertitle {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--font-mono);
-  font-size: var(--fs-micro);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--color-text-subtle);
-  margin-bottom: var(--space-xs);
 }
 
 /* Authentic Handwritten Notes */
 .text-handwritten {
   font-family: var(--font-handwritten);
-  font-size: 1.45rem;
-  line-height: 1.3;
+  font-size: 1.55rem;
+  line-height: 1.35;
   color: var(--color-action-primary);
 }
 
@@ -186,6 +172,15 @@ input:focus-visible {
   padding-right: var(--container-padding);
 }
 
+.container-hero {
+  width: 100%;
+  max-width: var(--container-hero);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
 /* Intentional Spacing Rhythms */
 .section {
   padding-top: var(--space-2xl);
@@ -210,7 +205,7 @@ input:focus-visible {
 }
 
 /* ==========================================================================
-   Section Header Stamp / Eyebrow (No Emojis)
+   Section Header Stamp / Eyebrow
    ========================================================================== */
 .section-header {
   margin-bottom: var(--space-xl);
@@ -229,7 +224,7 @@ input:focus-visible {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2xs);
-  padding: 3px 9px;
+  padding: 3px 10px;
   background-color: var(--color-surface-sunken);
   border: 1px solid var(--color-border-defined);
   border-radius: var(--radius-tag);
@@ -250,8 +245,8 @@ input:focus-visible {
 .section-desc {
   font-size: var(--fs-body-lg);
   color: var(--color-text-subtle);
-  max-width: 680px;
-  line-height: 1.6;
+  max-width: 660px;
+  line-height: 1.65;
 }
 
 .section-header.text-center .section-desc {
