@@ -19,7 +19,9 @@
   }
 
   .editorial-spotlight,
-  .editorial-spotlight.editorial-spotlight-reversed {
+  .editorial-spotlight.editorial-spotlight-reversed,
+  .cartoon-archive-card,
+  .cartoon-archive-card.reversed {
     grid-template-columns: 1fr;
     gap: var(--space-md);
   }
@@ -301,9 +303,11 @@
     font-size: 1.35rem;
   }
 
-  /* --- Editorial Spotlights --- */
+  /* --- Editorial Spotlights & Cartoon Archive Cards --- */
   .editorial-spotlight,
-  .editorial-spotlight.editorial-spotlight-reversed {
+  .editorial-spotlight.editorial-spotlight-reversed,
+  .cartoon-archive-card,
+  .cartoon-archive-card.reversed {
     display: flex;
     flex-direction: column;
     gap: var(--space-md);
@@ -312,7 +316,8 @@
     margin-bottom: var(--space-lg);
   }
 
-  .spotlight-media {
+  .spotlight-media,
+  .cartoon-card-media {
     order: -1;
     width: 100%;
     aspect-ratio: 16 / 10;

@@ -36,7 +36,7 @@
   <header class="site-header" id="header">
     <div class="container header-container">
       <div class="brand-link">
-        <a href="#watch" aria-label="Cartoon Vaala Home">
+        <a href="index.html" aria-label="Cartoon Vaala Home">
           <img src="Assests/Logo.png" alt="Cartoon Vaala Archive" class="brand-logo" width="160" height="42">
         </a>
         <div class="brand-station-tag">
@@ -45,12 +45,12 @@
         </div>
       </div>
 
-      <!-- Primary Destinations: WATCH, REMEMBER (Separate Page), CARTOONS -->
+      <!-- Primary Destinations: WATCH, REMEMBER, CARTOONS -->
       <nav class="site-nav" id="main-nav" aria-label="Primary Navigation">
         <ul class="nav-list">
-          <li><a href="#watch" class="nav-link">WATCH</a></li>
+          <li><a href="index.html" class="nav-link active">WATCH</a></li>
           <li><a href="remember.html" class="nav-link">REMEMBER</a></li>
-          <li><a href="#cartoons" class="nav-link">CARTOONS</a></li>
+          <li><a href="cartoons.html" class="nav-link">CARTOONS</a></li>
         </ul>
       </nav>
 
@@ -101,7 +101,7 @@
             <a href="remember.html" class="btn btn-primary">
               Relive 4:00 PM
             </a>
-            <a href="#cartoons" class="btn btn-secondary">
+            <a href="cartoons.html" class="btn btn-secondary">
               Browse Cartoons
             </a>
           </div>
@@ -351,211 +351,106 @@
     </section>
 
     <!-- ======================================================================
-         4. CARTOONS — Master Cartoon Archive with Network Filtering
+         4. CARTOONS — Curated Broadcast Highlights & Archive Gateway
          ====================================================================== -->
-    <section class="section section-spacious section-alt" id="cartoons" aria-label="Master Cartoon Archive">
+    <section class="section section-spacious section-alt" id="cartoons" aria-label="Curated Cartoon Highlights">
       <div class="container">
         <div class="section-header text-center">
-          <div class="section-tag">Master Cartoon Archive</div>
+          <div class="section-tag">Broadcast Lineup Highlights • 1998–2008</div>
           <h2 class="section-title">The Pillars of After-School Television</h2>
           <p class="section-desc">
-            Filter by television network to explore the animation, Hindi localization excellence, and lasting emotional
-            imprint of key franchises.
+            From Hungama TV to Cartoon Network and Pogo, these signature broadcast blocks shaped evening childhood rituals across millions of Indian homes.
           </p>
         </div>
 
-        <!-- Network Filter Bar -->
-        <div class="archive-filter-bar reveal-on-scroll">
-          <button class="filter-tab active" data-filter="all">
-            <span>📺 All Networks (7)</span>
-          </button>
-          <button class="filter-tab" data-filter="hungama">
-            <span>Hungama TV</span>
-          </button>
-          <button class="filter-tab" data-filter="cn">
-            <span>Cartoon Network</span>
-          </button>
-          <button class="filter-tab" data-filter="pogo">
-            <span>Pogo TV</span>
-          </button>
-        </div>
-
-        <!-- Featured Dual Column Editorial Spotlight 1: Doraemon -->
-        <div class="editorial-spotlight reveal-on-scroll" data-network="hungama" data-cartoon="Doremon">
-          <div class="spotlight-media">
-            <img src="Images/Doremon.jpg" alt="Doraemon and Nobita" width="600" height="375">
-            <div class="spotlight-meta-badge">
-              <span class="channel-pill hungama">Hungama TV • CH-04</span>
-            </div>
-          </div>
-          <div class="spotlight-content">
-            <div class="section-tag" style="margin-bottom: var(--space-2xs);">Anatomy of a 22nd Century Companion</div>
-            <h3 class="spotlight-heading">Doraemon: The Invention of Everyday Magic</h3>
-            <div class="spotlight-quote">
-              "Nobita, whether you succeed or fail is not written in stone. It depends entirely on your effort today."
-            </div>
-            <p>
-              Unlike western superhero narratives predicated on invincible power, Fujiko F. Fujio's masterpiece was
-              deeply human. Nobita Nobi was neither athletic nor academically gifted; he was clumsy, procrastinated
-              endlessly, and relied on a futuristic robotic cat with a 4D pocket.
-            </p>
-            <p>
-              Every gadget — from the Bamboo Copter to the Memory Bread — functioned as a parable on unintended
-              consequences and character resilience.
-            </p>
-            <div style="display: flex; gap: 8px; align-items: center; margin-top: var(--space-xs);">
-              <button class="btn btn-primary btn-sm btn-tune" data-cartoon="Doremon" data-track-id="doremon-1">
-                ▶ Tune Doraemon Channel
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Featured Dual Column Editorial Spotlight 2: Shinchan -->
-        <div class="editorial-spotlight editorial-spotlight-reversed reveal-on-scroll delay-1" data-network="hungama"
-          data-cartoon="Shinchan">
-          <div class="spotlight-content">
-            <div class="section-tag" style="margin-bottom: var(--space-2xs);">Subversive Comedy Timing</div>
-            <h3 class="spotlight-heading">Shinchan: Unfiltered Kasukabe Mayhem</h3>
-            <div class="spotlight-quote">
-              "Misae! Shiro wants his dinner, and Action Kamen is starting on TV right now!"
-            </div>
-            <p>
-              Yoshito Usui’s five-year-old protagonist dismantled adult pretense with surgical precision. Shinchan’s
-              unfiltered observations, frantic grocery store chases with his mother Misae, and devotion to Action Kamen
-              produced the sharpest comedic pacing on Indian television.
-            </p>
-            <p>
-              The Hindi dub elevated the series into folklore, infusing regional slang and unmatched voice acting
-              delivery.
-            </p>
-            <div style="display: flex; gap: 8px; align-items: center; margin-top: var(--space-xs);">
-              <button class="btn btn-primary btn-sm btn-tune" data-cartoon="Shinchan" data-track-id="shinchan-1">
-                ▶ Tune Shinchan Channel
-              </button>
-            </div>
-          </div>
-          <div class="spotlight-media">
-            <img src="Images/Shinchan.jpg" alt="Shinnosuke Nohara" width="600" height="375">
-            <div class="spotlight-meta-badge">
-              <span class="channel-pill hungama">Hungama TV • CH-04</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Secondary Showcases: Asymmetric Cards Grid -->
-        <div class="asymmetric-cards-grid reveal-on-scroll delay-2" style="margin-top: var(--space-xl);">
-          <!-- Card 1: Pokémon Indigo League -->
-          <article class="showcase-card" data-network="cn" data-cartoon="Pokemon">
+        <!-- Curated 3-Network Highlight Cards -->
+        <div class="asymmetric-cards-grid reveal-on-scroll" style="margin-bottom: var(--space-xl);">
+          
+          <!-- Highlight 1: Hungama TV -->
+          <article class="showcase-card" data-network="hungama" data-cartoon="Doremon">
             <div class="showcase-media">
-              <img src="Images/Pokemon.jpg" alt="Ash Ketchum and Pikachu" width="380" height="214">
-              <div class="showcase-channel-tag">
-                <span class="channel-pill cn">Cartoon Network • CH-08</span>
-              </div>
-            </div>
-            <div class="showcase-body">
-              <h4 class="showcase-title">Pokémon: Indigo League</h4>
-              <div class="showcase-tagline">"Gotta Catch 'Em All! 150 Pokémon in the Kanto Region."</div>
-              <p class="showcase-desc">
-                From leaving Pallet Town on bicycle with Pikachu to the Indigo Plateau tournament, Ash’s journey
-                redefined playground culture with Cheetos Tazo discs and sticker albums.
-              </p>
-              <div class="showcase-footer">
-                <span class="text-mono">1999–2004 CN Era</span>
-                <button class="btn-tune" data-cartoon="Pokemon" data-track-id="pokemon-1">▶ Tune Channel</button>
-              </div>
-            </div>
-          </article>
-
-          <!-- Card 2: Ninja Hattori -->
-          <article class="showcase-card" data-network="hungama" data-cartoon="NinjaHathori">
-            <div class="showcase-media">
-              <img src="Images/NinjaHathori.jpg" alt="Ninja Hattori and Kenichi" width="380" height="214">
+              <img src="Images/Doremon.jpg" alt="Doraemon and Nobita" width="380" height="214" loading="lazy">
               <div class="showcase-channel-tag">
                 <span class="channel-pill hungama">Hungama TV • CH-04</span>
               </div>
             </div>
             <div class="showcase-body">
-              <h4 class="showcase-title">Ninja Hattori-kun</h4>
-              <div class="showcase-tagline">"Pahadon ke upar, jungle ke paar... dekho kaun apne sheher aaya yaar!"</div>
+              <h4 class="showcase-title">Doraemon & Shinchan</h4>
+              <div class="showcase-tagline">"Everyday 22nd Century Magic & Kasukabe Mayhem"</div>
               <p class="showcase-desc">
-                Kanzo Hattori from Iga Village moving in with Kenichi Mitsuba, navigating everyday modern school
-                challenges with traditional ninjutsu and talking ninja dog Shishimaru.
+                The sacred 4:00 PM – 5:00 PM block that defined after-school television with 4D gadget parables, Shiro's cotton candy trick, and landmark Hindi voice acting.
               </p>
               <div class="showcase-footer">
-                <span class="text-mono">Iga Clan Ninjutsu</span>
-                <button class="btn-tune" data-cartoon="NinjaHathori" data-track-id="ninjahathori-1">▶ Tune
-                  Channel</button>
+                <span class="text-mono">16:00 & 16:30 IST</span>
+                <button class="btn-tune" data-cartoon="Doremon" data-track-id="doremon-1">▶ Tune 4:00 PM Channel</button>
               </div>
             </div>
           </article>
 
-          <!-- Card 3: Oggy and the Cockroaches -->
-          <article class="showcase-card" data-network="cn" data-cartoon="Oggy">
+          <!-- Highlight 2: Cartoon Network -->
+          <article class="showcase-card" data-network="cn" data-cartoon="Pokemon">
             <div class="showcase-media">
-              <img src="Images/Oggy.jpg" alt="Oggy and Jack" width="380" height="214">
+              <img src="Images/Pokemon.jpg" alt="Ash Ketchum and Pikachu" width="380" height="214" loading="lazy">
               <div class="showcase-channel-tag">
                 <span class="channel-pill cn">Cartoon Network • CH-08</span>
               </div>
             </div>
             <div class="showcase-body">
-              <h4 class="showcase-title">Oggy & The Cockroaches</h4>
-              <div class="showcase-tagline">"Kissa kursi ka, billi aur jhingur ka!"</div>
+              <h4 class="showcase-title">Pokémon & Oggy</h4>
+              <div class="showcase-tagline">"Cheetos Tazos, Kanto Battles & Bollywood Slapstick"</div>
               <p class="showcase-desc">
-                A masterpiece of slapstick physical comedy transformed into Indian pop-culture immortality by custom
-                Bollywood voice mimicries of Amitabh Bachchan, Sunny Deol, and Nana Patekar.
+                From Ash’s journey across Kanto with Pikachu to Oggy’s legendary Bollywood Hindi dub mimicries of Amitabh Bachchan and Sunny Deol.
               </p>
               <div class="showcase-footer">
-                <span class="text-mono">Hindi Dub Phenomenon</span>
-                <button class="btn-tune" data-cartoon="Oggy" data-track-id="oggy-1">▶ Tune Channel</button>
+                <span class="text-mono">17:00 & 18:00 IST</span>
+                <button class="btn-tune" data-cartoon="Pokemon" data-track-id="pokemon-1">▶ Tune 5:00 PM Channel</button>
               </div>
             </div>
           </article>
 
-          <!-- Card 4: Tom & Jerry -->
-          <article class="showcase-card" data-network="cn" data-cartoon="Tom&Jerry">
-            <div class="showcase-media">
-              <img src="Images/Tom&Jerry.jpg" alt="Tom & Jerry Classic Chase" width="380" height="214">
-              <div class="showcase-channel-tag">
-                <span class="channel-pill cn">Cartoon Network • CH-08</span>
-              </div>
-            </div>
-            <div class="showcase-body">
-              <h4 class="showcase-title">Tom & Jerry</h4>
-              <div class="showcase-tagline">"The timeless symphonic cat-and-mouse chase."</div>
-              <p class="showcase-desc">
-                William Hanna and Joseph Barbera's timeless orchestral chase sequences, accompanied by Scott Bradley's
-                lush jazz symphonies that bridged generations.
-              </p>
-              <div class="showcase-footer">
-                <span class="text-mono">Golden Slapstick</span>
-                <button class="btn-tune" data-cartoon="Tom&Jerry" data-track-id="tomjerry-1">▶ Tune Channel</button>
-              </div>
-            </div>
-          </article>
-
-          <!-- Card 5: Chhota Bheem -->
+          <!-- Highlight 3: Pogo TV -->
           <article class="showcase-card" data-network="pogo" data-cartoon="Bheem">
             <div class="showcase-media">
-              <img src="Images/Bheem.jpg" alt="Chhota Bheem in Dholakpur" width="380" height="214">
+              <img src="Images/Bheem.jpg" alt="Chhota Bheem in Dholakpur" width="380" height="214" loading="lazy">
               <div class="showcase-channel-tag">
                 <span class="channel-pill pogo">Pogo TV • CH-06</span>
               </div>
             </div>
             <div class="showcase-body">
-              <h4 class="showcase-title">Chhota Bheem</h4>
-              <div class="showcase-tagline">"Dholakpur ka ladoo-powered superhero!"</div>
+              <h4 class="showcase-title">Chhota Bheem & Pogo Era</h4>
+              <div class="showcase-tagline">"Dholakpur ka Ladoo-Powered Superhero"</div>
               <p class="showcase-desc">
-                Green Gold Animation's homegrown blockbuster that defined the mid-2000s Pogo TV era, bringing indigenous
-                storytelling and Dholakpur adventures to every Indian household.
+                India’s homegrown animation blockbuster that brought indigenous folklore, kingdom adventures, and Tuntun Mausi’s magical laddoos to family primetime.
               </p>
               <div class="showcase-footer">
-                <span class="text-mono">Homegrown Icon</span>
-                <button class="btn-tune" data-cartoon="Bheem" data-track-id="bheem-1">▶ Tune Channel</button>
+                <span class="text-mono">19:00 IST Family Slot</span>
+                <button class="btn-tune" data-cartoon="Bheem" data-track-id="bheem-1">▶ Tune 7:00 PM Channel</button>
               </div>
             </div>
           </article>
+
         </div>
+
+        <!-- Dedicated Master Portal Card Gateway to cartoons.html -->
+        <div class="reveal-on-scroll" style="background: linear-gradient(135deg, rgba(26, 20, 15, 0.95) 0%, rgba(13, 11, 9, 0.98) 100%); border: 1px solid var(--color-border-defined); border-radius: var(--radius-bezel); padding: var(--space-xl); text-align: center; box-shadow: var(--shadow-chassis);">
+          <div class="section-tag" style="margin-bottom: var(--space-2xs);">Dedicated Master Archive</div>
+          <h3 style="font-size: clamp(1.4rem, 4vw, 1.85rem); margin-bottom: var(--space-xs); color: var(--color-text-heading);">
+            Step Inside the Complete Master Cartoon Archive
+          </h3>
+          <p style="max-width: 620px; margin: 0 auto var(--space-md); color: var(--color-text-body); font-size: var(--fs-body); line-height: 1.65;">
+            Explore all 7 iconic franchises with multi-track soundtrack jukeboxes (11 broadcast songs), real-time search, character rosters, Hindi dub folklore, and deep-dive lore chronicles.
+          </p>
+          <div style="display: flex; gap: var(--space-sm); justify-content: center; flex-wrap: wrap;">
+            <a href="cartoons.html" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px;">
+              <span>✨ Open Master Cartoon Archive (7 Shows • 11 Soundtracks)</span>
+              <span style="font-size: 1.1rem;">→</span>
+            </a>
+            <a href="remember.html" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 6px;">
+              <span>Explore 1990s Time Capsule</span>
+            </a>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -580,8 +475,11 @@
           <button class="btn btn-primary bgm-toggle" aria-pressed="false">
             <span>Play Broadcast Audio</span>
           </button>
-          <a href="#watch" class="btn btn-secondary">
-            <span>Return to TV Tuner</span>
+          <a href="cartoons.html" class="btn btn-secondary">
+            <span>Explore Cartoons Archive</span>
+          </a>
+          <a href="remember.html" class="btn btn-secondary">
+            <span>Open Nostalgic Library</span>
           </a>
         </div>
       </div>
@@ -608,9 +506,9 @@
         <div>
           <div class="footer-col-title">Archive Navigation</div>
           <ul class="footer-list">
-            <li><a href="#watch">WATCH (TV Monitor)</a></li>
+            <li><a href="index.html">WATCH (TV Monitor)</a></li>
             <li><a href="remember.html">REMEMBER (Nostalgic Library)</a></li>
-            <li><a href="#cartoons">CARTOONS (Master Archive)</a></li>
+            <li><a href="cartoons.html">CARTOONS (Master Archive)</a></li>
           </ul>
         </div>
 
@@ -686,9 +584,6 @@
       style="width:30px; height:30px; font-size:0.75rem; border-radius:50%;">
       ▶
     </button>
-    <a href="#watch" class="broadcast-pill-btn" aria-label="Jump to TV Console">
-      Tune Monitor
-    </a>
   </aside>
 
   <!-- Master JavaScript Architecture -->
